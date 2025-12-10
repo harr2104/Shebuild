@@ -1,3 +1,6 @@
+/* ================================
+   BASE STYLES (UNCHANGED LOGIC)
+================================*/
 .banner {
   position: relative;
   width: 100%;
@@ -6,12 +9,11 @@
   perspective: 1200px;
 }
 
-/* Slider core remains unchanged */
 .slider {
   position: absolute;
   width: 300px;
   height: 300px;
-  top: 39%;
+  top: 42%;
   left: 50%;
   transform-style: preserve-3d;
   transform: translate(-50%, -50%);
@@ -30,7 +32,7 @@
 }
 
 .item img {
-  width: 400px;
+  width: 430px;
   height: 80%;
   object-fit: contain;
   border-radius: 0px;
@@ -45,7 +47,7 @@
   }
 }
 
-/* ⭐ TEXT CONTENT MASK — unchanged */
+/* text masking (unchanged) */
 .content {
   position: absolute;
   top: 50%;
@@ -60,40 +62,71 @@
 
   text-align: center;
 }
-
 .content h1,
 .content h2,
-.content p {
-  color: white;
-  pointer-events: none;
-}
-.item img {
-  width: 490px;
-  height: 80%;
-  object-fit: contain;
+.content p { 
+  color: white; 
+  pointer-events: none; 
 }
 
-/* Small phones */
+/* ================================
+   🔥 MOBILE RESPONSIVE FIXES
+================================*/
+
+/* 📱 SMALL PHONES → 0–480px */
 @media (max-width: 480px) {
+
+  .banner {
+    height: 65vh;             /* Reduce height so empty space is less */
+  }
+
+  .slider {
+    width: 200px;             /* Scale slider down */
+    height: 200px;
+    top: 50%;                 /* More centered */
+  }
+
+  .item img {
+    width: 240px;             /* Fits perfectly inside viewport */
+    height: 70%;
+  }
+
+  .item {
+    transform:
+      rotateY(calc(360deg / var(--quantity) * (var(--position) - 1)))
+      rotateX(-6deg)
+      translateZ(380px);      /* Reduce 3D depth for smaller screens */
+  }
+}
+
+/* 📱 MEDIUM PHONES → 480–640px */
+@media (min-width: 480px) and (max-width: 640px) {
 
   .banner {
     height: 70vh;
   }
 
   .slider {
-    width: 240px;   /* Slightly reduced slider box */
-    height: 240px;
-    top: 48%;
+    width: 230px;
+    height: 230px;
+    top: 50%;
   }
 
   .item img {
-    width: 320px;   /* Keep big size but scale down just enough */
-    height: 75%;
+    width: 300px;
+    height: 72%;
+  }
+
+  .item {
+    transform:
+      rotateY(calc(360deg / var(--quantity) * (var(--position) - 1)))
+      rotateX(-6deg)
+      translateZ(450px);
   }
 }
 
-/* Larger phones (480–640px) */
-@media (max-width: 640px) and (min-width: 480px) {
+/* 📲 TABLETS → 640–900px */
+@media (min-width: 640px) and (max-width: 900px) {
 
   .banner {
     height: 75vh;
@@ -102,28 +135,35 @@
   .slider {
     width: 260px;
     height: 260px;
+    top: 48%;
   }
 
   .item img {
-    width: 360px;   /* STILL BIG like desktop */
+    width: 340px;
     height: 75%;
+  }
+
+  .item {
+    transform:
+      rotateY(calc(360deg / var(--quantity) * (var(--position) - 1)))
+      rotateX(-6deg)
+      translateZ(520px);
   }
 }
 
-/* Tablets (641–1024px) */
-@media (max-width: 1024px) and (min-width: 641px) {
+/* 💻 SMALL LAPTOPS → 900–1200px */
+@media (min-width: 900px) and (max-width: 1200px) {
 
   .banner {
     height: 80vh;
   }
 
   .slider {
-    width: 290px;
-    height: 290px;
+    width: 280px;
+    height: 280px;
   }
 
   .item img {
-    width: 400px;   /* full-size restored */
-    height: 80%;
+    width: 380px;
   }
 }
