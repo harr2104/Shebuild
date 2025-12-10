@@ -4,34 +4,33 @@ import React from "react";
 export default function BackgroundEffects() {
   return (
     <>
-      {/* Very soft base background — behind everything */}
+      {/* STATIC BASE BACKGROUND — renders instantly, no fade = NO FLASH */}
       <div
         className="fixed inset-0 pointer-events-none"
         style={{
-          zIndex: -60,               // ensure it's behind everything
-          background: "#020617",
-          opacity: 0.6,
+          zIndex: -9999,
+          background: "#020617",   // solid dark navy
         }}
-      ></div>
+      />
 
-      {/* All other effects behind everything (even further back) */}
+      {/* Decorative Layer Behind Everything */}
       <div
         className="fixed inset-0 pointer-events-none"
-        style={{ zIndex: -70 }}
+        style={{ zIndex: -10000 }}
       >
-        {/* Grid (subtle) */}
+        {/* Soft Grid */}
         <div
-          className="absolute inset-0 opacity-15"
+          className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(0,255,255,0.06) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0,255,255,0.06) 1px, transparent 1px)
+              linear-gradient(rgba(0,255,255,0.05) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0,255,255,0.05) 1px, transparent 1px)
             `,
             backgroundSize: "80px 80px",
           }}
         />
 
-        {/* Floating particles — pure decorative, all pointer-events none */}
+        {/* Particles */}
         {Array.from({ length: 25 }).map((_, i) => (
           <div
             key={i}
@@ -49,15 +48,9 @@ export default function BackgroundEffects() {
           />
         ))}
 
-        {/* Orbs (soft glows) */}
-        <div
-          style={{ zIndex: -71 }}
-          className="absolute top-1/4 left-1/4 w-72 h-72 bg-cyan-400/10 blur-3xl rounded-full"
-        />
-        <div
-          style={{ zIndex: -71 }}
-          className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-purple-400/10 blur-3xl rounded-full"
-        />
+        {/* Orbs */}
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-cyan-400/10 blur-3xl rounded-full" />
+        <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-purple-400/10 blur-3xl rounded-full" />
       </div>
     </>
   );

@@ -133,6 +133,17 @@ export default function MainContent() {
             >
               CONNECT 3.0
             </motion.span>
+          {/* MOBILE REGISTER BUTTON */}
+          <div className="block md:hidden mt-4">
+            <button className="shebuilds-btn mx-auto">
+              <strong>REGISTER NOW</strong>
+              <div className="sb-stars-container"><div className="sb-stars"></div></div>
+              <div className="sb-glow">
+                <div className="sb-circle"></div>
+                <div className="sb-circle"></div>
+              </div>
+            </button>
+          </div>
 
           </h1>
         </motion.div>
