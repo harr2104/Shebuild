@@ -19,7 +19,6 @@ export default function ProjectsSlider() {
   };
 
   const images = [img1, img2, img3, img4, img5];
-
   const [index, setIndex] = useState(0);
   const [animClass, setAnimClass] = useState("");
 
@@ -50,67 +49,71 @@ export default function ProjectsSlider() {
 
   return (
     <>
-   
-      <motion.div
-        ref={ref}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        variants={fadeUp}
-        className="text-center mb-10 sm:mb-12 px-4 "
-      >
-        <div
-          id="projects"
-          className="inline-flex items-center gap-2 px-4 py-2 projects-slider-section
-          bg-gray-900/50 backdrop-blur-sm rounded-lg border border-blue-500/30 mb-4"
+      {/* ⭐⭐ WRAPPER ADDED — NOTHING ELSE CHANGED */}
+      <div className="slider-section">
+
+        <motion.div
+          ref={ref}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={fadeUp}
+          className="text-center mb-10 sm:mb-12 px-4 "
         >
-          <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-          <span className="text-cyan-400 font-mono text-xs sm:text-sm tracking-wider">
-            SUCCESS_STORIES
-          </span>
-        </div>
-
-        <h2
-          className="text-3xl sm:text-4xl md:text-5xl font-bold font-custom mb-4 
-          bg-clip-text text-transparent bg-gradient-to-r 
-          from-cyan-400 via-purple-400 to-cyan-400"
-        >
-          SheBuilds Success
-        </h2>
-      </motion.div>
-
-      {/* DESKTOP 3D CAROUSEL */}
-      <div className="desktop-carousel">
-        <div className="banner">
-          <div className="slider" style={{ "--quantity": images.length }}>
-            {images.map((img, i) => (
-              <div key={i} className="item" style={{ "--position": i + 1 }}>
-                <img src={img} alt={`slide-${i}`} className={i === 4 ? "img-small" : ""}/>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-  
-      <div className="mobile-slider">
-        <div className="mobile-slider-container">
-
-          <FiChevronLeft className="arrow-btn arrow-left" onClick={prevSlide} />
-
-          {/* Image */}
-          <div className="mobile-img-wrapper">
-            <img
-              src={images[index]}
-              className={`mobile-img ${animClass}`}
-              alt="mobile-slide"
-            />
+          <div
+            id="projects"
+            className="inline-flex items-center gap-2 px-4 py-2 projects-slider-section
+            bg-gray-900/50 backdrop-blur-sm rounded-lg border border-blue-500/30 mb-4"
+          >
+            <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+            <span className="text-cyan-400 font-mono text-xs sm:text-sm tracking-wider">
+              SUCCESS_STORIES
+            </span>
           </div>
 
-          {/* Right Arrow */}
-          <FiChevronRight className="arrow-btn arrow-right" onClick={nextSlide} />
+          <h2
+            className="text-3xl sm:text-4xl md:text-5xl font-bold font-custom mb-4 
+            bg-clip-text text-transparent bg-gradient-to-r 
+            from-cyan-400 via-purple-400 to-cyan-400"
+          >
+            SheBuilds Success
+          </h2>
+        </motion.div>
 
+        {/* DESKTOP 3D CAROUSEL */}
+        <div className="desktop-carousel">
+          <div className="banner">
+            <div className="slider" style={{ "--quantity": images.length }}>
+              {images.map((img, i) => (
+                <div key={i} className="item" style={{ "--position": i + 1 }}>
+                  <img src={img} alt={`slide-${i}`} className={i === 4 ? "img-small" : ""} />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
+
+        {/* MOBILE CAROUSEL */}
+        <div className="mobile-slider">
+          <div className="mobile-slider-container">
+
+            <FiChevronLeft className="arrow-btn arrow-left" onClick={prevSlide} />
+
+            <div className="mobile-img-wrapper">
+              <img
+                src={images[index]}
+                className={`mobile-img ${animClass}`}
+                alt="mobile-slide"
+              />
+            </div>
+
+            <FiChevronRight className="arrow-btn arrow-right" onClick={nextSlide} />
+
+          </div>
+        </div>
+
       </div>
+      {/* ⭐⭐ END WRAPPER */}
+
     </>
   );
 }

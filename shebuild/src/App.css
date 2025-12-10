@@ -172,15 +172,11 @@ body {
     opacity: 1;
   }
 }
-
 .slider-section {
-  background-image: url('/shebuilds.png');  
+  background-image: url('/shebuilds.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
-.slider-section .bg-gray-950 {
-  background-color: transparent !important;
 }
 
 @media (max-width: 640px) {
@@ -190,6 +186,7 @@ body {
   .hero-section {
     margin-top: 50px;
   }
+  
 }
 .shebuilds-btn {
   position: relative;
