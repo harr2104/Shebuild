@@ -7,34 +7,29 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
   const [lastScroll, setLastScroll] = useState(0);
-  const [ready, setReady] = useState(false);
-
-  // ⭐ Delay scroll behavior to avoid hiding navbar on first load
-  useEffect(() => {
-    const timer = setTimeout(() => setReady(true), 600); // wait for 0.6s
-    return () => clearTimeout(timer);
-  }, []);
+  const [firstLoad, setFirstLoad] = useState(true);
 
   useEffect(() => {
+    // Always show navbar for the first 300ms
+    setShowHeader(true);
+
+    const timer = setTimeout(() => {
+      setFirstLoad(false);
+    }, 300);
+
     const handleScroll = () => {
       const currentScroll = window.scrollY;
 
-      if (!ready) {
-        setShowHeader(true);
-        return;
-      }
-
-      // Always show when near top 
-      if (currentScroll < 10) {
-        setShowHeader(true);
-      } 
-      // Scrolling down → hide header
-      else if (currentScroll > lastScroll) {
-        setShowHeader(false);
-      } 
-      // Scrolling up → show
-      else {
-        setShowHeader(true);
+      if (!firstLoad) {
+        if (currentScroll < 10) {
+          setShowHeader(true);
+        } else {
+          if (currentScroll > lastScroll) {
+            setShowHeader(false); // scrolling DOWN → hide
+          } else {
+            setShowHeader(true); // scrolling UP → show
+          }
+        }
       }
 
       setLastScroll(currentScroll);
@@ -42,8 +37,12 @@ export default function Header() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScroll, ready]);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScroll, firstLoad]);
 
   const navItems = [
     { label: "HOME", path: "#", icon: <FiHome /> },
@@ -58,62 +57,74 @@ export default function Header() {
     <header
       className={`
         fixed top-0 left-0 right-0 z-50
-        px-4 md:px-8 lg:px-16
+        pt-4 px-4 md:px-8 lg:px-16
         transition-all duration-300
         ${showHeader ? "translate-y-0" : "-translate-y-full"}
-        ${scrolled ? 
-          "bg-gray-950/90 backdrop-blur-md border-b border-cyan-500/20 py-3" 
-          : 
-          "bg-gray-950/70 backdrop-blur-sm py-4"
+        ${scrolled 
+          ? "bg-gray-950/90 backdrop-blur-md border-b border-cyan-500/20 py-3"
+          : "bg-gray-950/70 backdrop-blur-sm py-4"
         }
       `}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between md:justify-start gap-4 md:gap-8">
 
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          <img src={logo} className="w-15 h-12 object-contain" />
-          <span className="text-cyan-400 font-mono text-sm tracking-widest">SHEBUILDS</span>
+        <div className="flex items-center gap-4 md:gap-10">
+          <div className="flex items-center gap-2">
+            <img src={logo} alt="SheBuilds logo" className="w-15 h-12 object-contain" />
+            <span className="text-cyan-400 font-mono text-sm tracking-widest">SHEBUILDS</span>
+          </div>
+
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-6">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.path}
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector(item.path)?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="
+                  text-gray-400 text-sm font-custom hover:text-cyan-400
+                  transition flex items-center gap-1 group relative
+                "
+              >
+                <span className="text-cyan-500/60">//</span>
+                {item.label}
+                <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-cyan-400 group-hover:w-full transition-all duration-300"></div>
+              </a>
+            ))}
+          </div>
         </div>
 
-        {/* Desktop Menu */}
-        <nav className="hidden md:flex items-center gap-6">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.path}
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector(item.path)?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="text-gray-400 text-sm hover:text-cyan-400 font-custom transition relative group flex items-center gap-1"
-            >
-              <span className="text-cyan-500/60">//</span>
-              {item.label}
-              <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-cyan-400 group-hover:w-full transition-all duration-300"></div>
-            </a>
-          ))}
-        </nav>
-
-        {/* CTA Button */}
+        {/* Register Button */}
         <div className="hidden md:block ml-auto">
           <button className="shebuilds-btn">
             <strong>REGISTER NOW</strong>
             <div className="sb-stars-container"><div className="sb-stars"></div></div>
-            <div className="sb-glow"><div className="sb-circle"></div><div className="sb-circle"></div></div>
+            <div className="sb-glow">
+              <div className="sb-circle"></div>
+              <div className="sb-circle"></div>
+            </div>
           </button>
         </div>
 
-        {/* Mobile Menu Toggle */}
-        <button className="md:hidden text-cyan-400 text-2xl" onClick={() => setOpen(!open)}>
+        {/* Mobile Menu Button */}
+        <button 
+          className="md:hidden text-cyan-400 text-2xl"
+          onClick={() => setOpen(!open)}
+        >
           {open ? <FiX /> : <FiMenu />}
         </button>
+
       </div>
 
-      {/* MOBILE MENU */}
+      {/* Mobile Dropdown */}
       {open && (
         <div className="md:hidden mt-4 bg-gray-900/95 backdrop-blur-lg rounded-lg border border-gray-800 shadow-xl overflow-hidden">
           <div className="p-3 space-y-1">
+
             {navItems.map((item) => (
               <a
                 key={item.label}
@@ -123,7 +134,13 @@ export default function Header() {
                   setOpen(false);
                   document.querySelector(item.path)?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="w-full px-4 py-3 flex items-center justify-between text-gray-300 text-sm hover:bg-gray-800/50 hover:text-cyan-300 transition rounded-lg"
+                className="
+                  w-full px-4 py-3 
+                  flex items-center justify-between
+                  text-gray-300 font-mono text-sm 
+                  hover:bg-gray-800/50 hover:text-cyan-300 
+                  transition rounded-lg
+                "
               >
                 <div className="flex items-center gap-3">
                   <span className="text-cyan-500/70">{item.icon}</span>
@@ -133,14 +150,22 @@ export default function Header() {
               </a>
             ))}
 
+            {/* Mobile Register */}
             <div className="pt-3 border-t border-gray-800/50">
-              <button className="w-full px-4 py-3 rounded-lg bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 text-cyan-400 text-sm font-mono">
+              <button className="
+                w-full px-4 py-3 
+                rounded-lg border border-cyan-500/30
+                bg-gradient-to-r from-cyan-500/20 to-purple-500/20 
+                text-cyan-400 text-sm font-mono
+              ">
                 REGISTER FOR EVENT
               </button>
             </div>
+
           </div>
         </div>
       )}
+
     </header>
   );
 }
