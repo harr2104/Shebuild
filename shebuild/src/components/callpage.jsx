@@ -54,10 +54,10 @@ export default function CallPage() {
     <section
       id="call"
       className="
-        relative 
-        pt-20 sm:pt-28 md:pt-32   /* ⭐ Added spacing on top */
-        pb-16 sm:pb-20 md:pb-24 
-        px-4 sm:px-6 md:px-8 lg:px-16 
+        relative
+        pt-12 sm:pt-16 md:pt-20   /* ⭐ FIXED: Reduced spacing */
+        pb-16 sm:pb-20 md:pb-24
+        px-4 sm:px-6 md:px-8 lg:px-16
         overflow-hidden
       "
     >
@@ -74,7 +74,7 @@ export default function CallPage() {
           animate={isInView ? "visible" : "hidden"}
           variants={fadeInUp}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-10 sm:mb-14 md:mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 
             bg-gray-900/50 backdrop-blur-sm rounded-lg border border-blue-500/30 mb-4">
@@ -103,9 +103,10 @@ export default function CallPage() {
         <motion.div
           variants={fadeInUp}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="relative mb-12"
+          className="relative mb-12 mt-4 sm:mt-8"   /* ⭐ FIXED */
         >
-          <div className="absolute -inset-4 bg-gradient-to-r 
+          {/* Glow Background */}
+          <div className="absolute inset-0 sm:-inset-4 bg-gradient-to-r 
             from-cyan-500/20 via-blue-500/20 to-cyan-500/20 
             rounded-3xl blur-xl"></div>
 
@@ -113,7 +114,9 @@ export default function CallPage() {
             from-gray-900/60 to-gray-800/40 backdrop-blur-md 
             rounded-2xl border-2 border-cyan-500/30 p-6 sm:p-8 overflow-hidden"
           >
-            <motion.div variants={scaleIn} className="absolute top-4 right-4 sm:top-6 sm:right-6">
+            {/* FEATURED BADGE — FIXED POSITION FOR MOBILE */}
+            <motion.div variants={scaleIn} 
+              className="absolute top-2 right-2 sm:top-6 sm:right-6">
               <div className="flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-2 
               rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 
               border border-cyan-500/30">
@@ -124,7 +127,6 @@ export default function CallPage() {
               </div>
             </motion.div>
 
-            {/* FLEX WRAP FOR MOBILE */}
             <div className="flex flex-col lg:flex-row items-start gap-6 sm:gap-8">
               
               {/* LEFT SECTION */}
@@ -224,7 +226,11 @@ export default function CallPage() {
               title: "SHARE AS SPEAKER",
               description: "Inspire the next generation with your journey.",
               cta: "Apply to Speak",
-              benefits: ["Impact 1000+ women", "Share domain expertise", "Join a national speaker network"],
+              benefits: [
+                "Impact 1000+ women",
+                "Share domain expertise",
+                "Join a national speaker network",
+              ],
             },
             {
               id: "volunteers",
@@ -232,7 +238,12 @@ export default function CallPage() {
               title: "VOLUNTEER WITH US",
               description: "Be the backbone of our events.",
               cta: "Join as Volunteer",
-              benefits: ["Build leadership & communication skills","Work closely with mentors & speakers", "Networking", "Volunteer certificate"],
+              benefits: [
+                "Build leadership & communication skills",
+                "Work closely with mentors & speakers",
+                "Networking",
+                "Volunteer certificate",
+              ],
             },
           ].map((opp, idx) => (
             <motion.div

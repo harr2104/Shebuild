@@ -136,7 +136,7 @@ export default function MainContent() {
           {/* MOBILE REGISTER BUTTON */}
           <div className="block md:hidden mt-4">
             <button className="shebuilds-btn mx-auto">
-              <strong>REGISTER NOW</strong>
+              <strong>CLICK TO REGISTER </strong>
               <div className="sb-stars-container"><div className="sb-stars"></div></div>
               <div className="sb-glow">
                 <div className="sb-circle"></div>

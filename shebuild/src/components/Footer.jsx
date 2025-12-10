@@ -5,16 +5,15 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const contactInfo = [
-    { icon: <FiMail />, text: "hello@shebuilds.tech", href: "mailto:hello@shebuilds.tech" },
-    { icon: <FiPhone />, text: "+91 98765 43210", href: "tel:+919876543210" },
-    { icon: <FiMapPin />, text: "Bangalore, India", href: "#" },
+    { icon: <FiMail />, text: "keerthana.shebuilds@gmail.com", href: "mailto:keerthana.shebuilds@gmail.com" },
+    { icon: <FiPhone />, text: "+91 94450 87093", href: "tel:+919445087093" },
+    { icon: <FiMapPin />, text: "Chennai, India", href: "https://www.google.com/maps/search/Chennai%2C+Chennai%2C+India/?hl=en" },
   ];
 
   const socialLinks = [
     { icon: <FiInstagram />, label: "Instagram", href: "#" },
     { icon: <FiTwitter />, label: "Twitter", href: "#" },
     { icon: <FiLinkedin />, label: "LinkedIn", href: "#" },
-    { icon: <FiGithub />, label: "GitHub", href: "#" },
     { icon: <FiYoutube />, label: "YouTube", href: "#" },
   ];
 
@@ -22,7 +21,7 @@ export default function Footer() {
     { name: "Home", href: "#" },
     { name: "About", href: "#about" },
     { name: "Why Attend", href: "#whyattend" },
-    { name: "Event", href: "#projects" },
+    { name: "Journey", href: "#projects" },
     { name: "Join Us", href: "#call" },
     { name: "Contact", href: "#footer" },
   ];
