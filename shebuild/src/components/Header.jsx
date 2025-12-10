@@ -8,37 +8,32 @@ export default function Header() {
   const [showHeader, setShowHeader] = useState(true);
   const [lastScroll, setLastScroll] = useState(0);
 
-  // 👇 HERO HEIGHT (after this point navbar can hide)
-  const HERO_HIDE_THRESHOLD = 350;
+  const HERO_HIDE_THRESHOLD = 350; // laptop/desktop only
 
   useEffect(() => {
-    let allowHide = false; // prevents early hide during load
-
     const handleScroll = () => {
       const currentScroll = window.scrollY;
 
-      // Mark hero passed
-      if (currentScroll > HERO_HIDE_THRESHOLD) {
-        allowHide = true;
+      setScrolled(currentScroll > 10);
+
+      // ⭐ MOBILE BEHAVIOR — navbar ALWAYS visible
+      if (window.innerWidth < 768) {
+        setShowHeader(true);
+        return;
       }
 
-      // Always show before hero is passed
-      if (!allowHide) {
+      // ⭐ DESKTOP BEHAVIOR — hide only after hero
+      if (currentScroll < HERO_HIDE_THRESHOLD) {
         setShowHeader(true);
       } else {
-        // Hide only when scrolling down after hero
-        if (currentScroll > lastScroll) {
-          setShowHeader(false);
-        } else {
-          setShowHeader(true);
-        }
+        if (currentScroll > lastScroll) setShowHeader(false);
+        else setShowHeader(true);
       }
 
       setLastScroll(currentScroll);
-      setScrolled(currentScroll > 10);
     };
 
-    // Always shown on load
+    // Always show on page load
     setShowHeader(true);
 
     window.addEventListener("scroll", handleScroll);
@@ -86,23 +81,20 @@ export default function Header() {
                 document.querySelector(item.path)?.scrollIntoView({ behavior: "smooth" });
               }}
               className="
-                text-gray-400 
-                text-sm 
-                font-custom 
-                hover:text-cyan-400 
-                transition
-                flex items-center gap-1
-                group relative
+                text-gray-400 text-sm font-custom hover:text-cyan-400 
+                transition flex items-center gap-1 group relative
               "
             >
               <span className="text-cyan-500/60">//</span>
               {item.label}
-              <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-cyan-400 group-hover:w-full transition-all duration-300"></div>
+
+              <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-cyan-400 
+                group-hover:w-full transition-all duration-300"></div>
             </a>
           ))}
         </div>
 
-        {/* Register Button */}
+        {/* Desktop Register Button */}
         <div className="hidden md:block ml-auto">
           <button className="shebuilds-btn">
             <strong>REGISTER NOW</strong>
@@ -137,8 +129,7 @@ export default function Header() {
                   document.querySelector(item.path)?.scrollIntoView({ behavior: "smooth" });
                 }}
                 className="
-                  w-full px-4 py-3 
-                  flex items-center justify-between
+                  w-full px-4 py-3 flex items-center justify-between
                   text-gray-300 font-mono text-sm 
                   hover:bg-gray-800/50 hover:text-cyan-300 
                   transition rounded-lg
@@ -150,10 +141,20 @@ export default function Header() {
                 </div>
               </a>
             ))}
+
+            {/* Mobile Register Button */}
+            <div className="pt-3 border-t border-gray-800/50">
+              <button className="
+                w-full px-4 py-3 rounded-lg border border-cyan-500/30
+                bg-gradient-to-r from-cyan-500/20 to-purple-500/20 
+                text-cyan-400 text-sm font-mono
+              ">
+                REGISTER FOR EVENT
+              </button>
+            </div>
           </div>
         </div>
       )}
-
     </header>
   );
 }

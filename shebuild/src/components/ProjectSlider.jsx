@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import "./Projectslider.css";
 
@@ -11,13 +11,22 @@ import img5 from "../assets/ProjectSlider/img5.png";
 export default function ProjectsSlider() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const [mobileIndex, setMobileIndex] = useState(0);
 
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.7 } }
   };
 
-  const projects = [ { img: img1 }, { img: img2 }, { img: img3 }, { img: img4 }, { img: img5 } ];
+  const projects = [img1, img2, img3, img4, img5];
+
+  // 👉 Auto-slide for mobile
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMobileIndex((prev) => (prev + 1) % projects.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
@@ -57,14 +66,21 @@ export default function ProjectsSlider() {
         </p>
       </motion.div>
 
-      {/* 3D Carousel */}
-      <div className="banner">
+      {/* DESKTOP 3D CAROUSEL */}
+      <div className="banner desktop-slider">
         <div className="slider" style={{ "--quantity": projects.length }}>
-          {projects.map((p, i) => (
+          {projects.map((img, i) => (
             <div key={i} className="item" style={{ "--position": i + 1 }}>
-              <img src={p.img} alt={`slide-${i}`} />
+              <img src={img} />
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* MOBILE CARD SLIDER (auto changing) */}
+      <div className="mobile-slider px-6 py-8">
+        <div className="mobile-card">
+          <img src={projects[mobileIndex]} className="mobile-img" />
         </div>
       </div>
     </>

@@ -1,6 +1,15 @@
-/* ==============================
-   BASE DESKTOP STYLES
-============================== */
+/* ===========================
+   DESKTOP 3D CAROUSEL
+=========================== */
+
+.desktop-slider {
+  display: block;
+}
+
+.mobile-slider {
+  display: none;
+}
+
 .banner {
   position: relative;
   width: 100%;
@@ -42,79 +51,38 @@
   to { transform: translate(-50%, -50%) rotateY(360deg); }
 }
 
-/* ==============================
-      RESPONSIVE FIXES
-============================== */
+/* ===========================
+   MOBILE RESPONSIVE VIEW
+=========================== */
 
-/* 📱 SMALL PHONES (0–480px) */
-@media (max-width: 480px) {
-  .banner {
-    height: 60vh;
+@media (max-width: 768px) {
+  .desktop-slider {
+    display: none !important;
   }
 
-  .slider {
-    width: 180px;
-    height: 180px;
-    top: 50%;
+  .mobile-slider {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    background: transparent; /* NORMAL BG like rest of page */
   }
 
-  .item {
-    transform:
-      rotateY(calc(360deg / var(--quantity) * (var(--position) - 1)))
-      rotateX(-4deg)
-      translateZ(260px);  /* FIXED depth */
+  .mobile-card {
+    width: 85%;
+    height: auto;
+    padding: 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
   }
 
-  .item img {
-    width: 190px;
-    height: 65%;
-  }
-}
-
-/* 📱 MID PHONES (480–640px) */
-@media (min-width: 480px) and (max-width: 640px) {
-  .banner {
-    height: 65vh;
-  }
-
-  .slider {
-    width: 220px;
-    height: 220px;
-  }
-
-  .item {
-    transform:
-      rotateY(calc(360deg / var(--quantity) * (var(--position) - 1)))
-      rotateX(-5deg)
-      translateZ(330px);
-  }
-
-  .item img {
-    width: 260px;
-    height: 70%;
-  }
-}
-
-/* 📲 TABLETS (640–900px) */
-@media (min-width: 640px) and (max-width: 900px) {
-  .banner {
-    height: 70vh;
-  }
-
-  .slider {
-    width: 260px;
-    height: 260px;
-    top: 48%;
-  }
-
-  .item {
-    transform:
-      rotateY(calc(360deg / var(--quantity) * (var(--position) - 1)))
-      rotateX(-6deg)
-      translateZ(430px);
-  }
-
-  .item img {
-    width: 320px;
+  .mobile-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
   }
 }
