@@ -8,41 +8,35 @@ export default function Header() {
   const [showHeader, setShowHeader] = useState(true);
   const [lastScroll, setLastScroll] = useState(0);
 
-  const HERO_HIDE_THRESHOLD = 350; 
+  const HERO_HIDE_THRESHOLD = 350;
 
-useEffect(() => {
-  const handleScroll = () => {
-    const currentScroll = window.scrollY;
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
 
-    // Add background when scrolling
-    setScrolled(currentScroll > 10);
+      setScrolled(currentScroll > 10);
 
-    // MOBILE: Always show navbar
-    if (window.innerWidth < 768) {
-      setShowHeader(true);
-      return;
-    }
-
-    // DESKTOP: Hide only after hero section
-    if (currentScroll < HERO_HIDE_THRESHOLD) {
-      setShowHeader(true);
-    } else {
-      if (currentScroll > lastScroll) {
-        // scrolling down
-        setShowHeader(false);
-      } else {
-        // scrolling up
+      if (window.innerWidth < 768) {
         setShowHeader(true);
+        return;
       }
-    }
 
-    setLastScroll(currentScroll);
-  };
+      if (currentScroll < HERO_HIDE_THRESHOLD) {
+        setShowHeader(true);
+      } else {
+        if (currentScroll > lastScroll) {
+          setShowHeader(false); // scrolling down
+        } else {
+          setShowHeader(true); // scrolling up
+        }
+      }
 
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, [lastScroll]);
+      setLastScroll(currentScroll);
+    };
 
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScroll]);
 
   const navItems = [
     { label: "HOME", path: "#", icon: <FiHome /> },
@@ -55,21 +49,23 @@ useEffect(() => {
 
   return (
     <header
-  className={`
-    fixed top-0 left-0 right-0 z-[9999]
-    pt-4 px-4 md:px-8 lg:px-16
-    transition-all duration-300
-    ${showHeader ? "translate-y-0" : "-translate-y-full"}
-    ${scrolled ? "bg-gray-950/90 backdrop-blur-md border-b border-cyan-500/20 py-3" : "bg-gray-950/70 backdrop-blur-sm py-4"}
-  `}
+      className={`
+        fixed top-0 left-0 right-0 z-[9999]
+        pt-4 px-4 md:px-8 lg:px-16
+        transition-all duration-300
+        ${showHeader ? "translate-y-0" : "-translate-y-full"}
+        ${scrolled ? "bg-gray-950/90 backdrop-blur-md border-b border-cyan-500/20 py-3" : "bg-gray-950/70 backdrop-blur-sm py-4"}
+      `}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between md:justify-start gap-4 md:gap-8">
 
+        {/* LOGO */}
         <div className="flex items-center gap-2">
           <img src={logo} alt="SheBuilds logo" className="w-15 h-12 object-contain" />
           <span className="text-cyan-400 font-mono text-sm tracking-widest">SHEBUILDS</span>
         </div>
 
+        {/* DESKTOP NAV */}
         <div className="hidden md:flex items-center gap-6">
           {navItems.map((item) => (
             <a
@@ -87,14 +83,20 @@ useEffect(() => {
               <span className="text-cyan-500/60">//</span>
               {item.label}
 
-              <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-cyan-400 
-                group-hover:w-full transition-all duration-300"></div>
+              <div
+                className="absolute -bottom-1 left-0 w-0 h-[1px] bg-cyan-400 
+                group-hover:w-full transition-all duration-300"
+              ></div>
             </a>
           ))}
         </div>
 
+        {/* DESKTOP REGISTER BUTTON */}
         <div className="hidden md:block ml-auto">
-          <button className="shebuilds-btn">
+          <button
+            className="shebuilds-btn"
+            onClick={() => window.open("https://www.google.com", "_blank")}
+          >
             <strong>REGISTER NOW</strong>
             <div className="sb-stars-container"><div className="sb-stars"></div></div>
             <div className="sb-glow">
@@ -104,15 +106,19 @@ useEffect(() => {
           </button>
         </div>
 
-        <button 
+        {/* MOBILE MENU TOGGLE */}
+        <button
           className="md:hidden text-cyan-400 text-2xl"
           onClick={() => setOpen(!open)}
         >
           {open ? <FiX /> : <FiMenu />}
         </button>
       </div>
+
+      {/* MOBILE MENU */}
       {open && (
         <div className="md:hidden mt-4 bg-gray-900/95 backdrop-blur-lg rounded-lg border border-gray-800 shadow-xl overflow-hidden">
+
           <div className="p-3 space-y-1">
             {navItems.map((item) => (
               <a
@@ -137,15 +143,20 @@ useEffect(() => {
               </a>
             ))}
 
+            {/* MOBILE REGISTER BUTTON */}
             <div className="pt-3 border-t border-gray-800/50">
-              <button className="
-                w-full px-4 py-3 rounded-lg border border-cyan-500/30
-                bg-gradient-to-r from-cyan-500/20 to-purple-500/20 
-                text-cyan-400 text-sm font-mono
-              ">
+              <button
+                className="
+                  w-full px-4 py-3 rounded-lg border border-cyan-500/30
+                  bg-gradient-to-r from-cyan-500/20 to-purple-500/20 
+                  text-cyan-400 text-sm font-mono
+                "
+                onClick={() => window.open("https://www.google.com", "_blank")}
+              >
                 REGISTER FOR EVENT
               </button>
             </div>
+
           </div>
         </div>
       )}

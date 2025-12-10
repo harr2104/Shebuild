@@ -18,6 +18,7 @@ export default function App() {
         <div className="relative z-10 h-full flex flex-col">
         <BackgroundEffects />
           <Header />
+          
           <MainContent />
         </div>
       </div>
@@ -64,8 +65,11 @@ export default function App() {
         </div>
       </div>
       <div className="relative overflow-hidden">
-        <Footer />
+        <BackgroundEffects />
+        <div className="relative z-10">
+          <Footer />
         </div>
+      </div>
     </div>
   );
 }

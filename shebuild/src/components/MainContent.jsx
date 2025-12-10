@@ -61,7 +61,8 @@ export default function MainContent() {
         items-center justify-center 
         px-4 sm:px-6 md:px-10 lg:px-16 
         pb-10 md:pb-16 pt-10 sm:pt-12 md:pt-14
-        gap-8 md:gap-12
+        gap-8 md:gap-12 
+mt-[50px] sm:mt-[60px] md:mt-[40px] lg:mt-[50px]
       "
     >
 
@@ -71,7 +72,7 @@ export default function MainContent() {
         className="
           w-full lg:w-1/2 
           flex justify-center items-center
-          order-1 lg:order-2
+          order-1 lg:order-2 
         "
       >
         <motion.img
@@ -99,7 +100,7 @@ export default function MainContent() {
         "
       >
 
-{/* TITLE */}
+        {/* TITLE */}
         <motion.div className="relative" variants={titleVariants}>
           <h1 className="font-bold leading-none">
 
@@ -142,7 +143,10 @@ export default function MainContent() {
 
         {/* MOBILE REGISTER BUTTON (below line now) */}
         <div className="block md:hidden mt-3 mb-2">
-          <button className="shebuilds-btn mx-auto">
+          <button
+            className="shebuilds-btn mx-auto"
+            onClick={() => window.open("https://www.google.com", "_blank")}
+          >
             <strong>CLICK TO REGISTER</strong>
             <div className="sb-stars-container"><div className="sb-stars"></div></div>
             <div className="sb-glow">
