@@ -1,4 +1,4 @@
-import { FiMail, FiPhone, FiMapPin, FiInstagram, FiTwitter, FiLinkedin, FiGithub, FiYoutube } from "react-icons/fi";
+import { FiMail, FiPhone, FiMapPin, FiInstagram, FiLinkedin } from "react-icons/fi";
 import { motion } from "framer-motion";
 import logo from "../assets/Header_logo.png"; 
 
@@ -11,11 +11,10 @@ export default function Footer() {
     { icon: <FiMapPin />, text: "Chennai, India", href: "https://www.google.com/maps/search/Chennai%2C+Chennai%2C+India/?hl=en" },
   ];
 
+  // ✅ Twitter + YouTube removed
   const socialLinks = [
-    { icon: <FiInstagram />, label: "Instagram", href: "#" },
-    { icon: <FiTwitter />, label: "Twitter", href: "#" },
-    { icon: <FiLinkedin />, label: "LinkedIn", href: "#" },
-    { icon: <FiYoutube />, label: "YouTube", href: "#" },
+    { icon: <FiInstagram />, label: "Instagram", href: "https://www.instagram.com/shebuildseco?igsh=dTVlaTI5bnI4cDQ4" },
+    { icon: <FiLinkedin />, label: "LinkedIn", href: "https://www.linkedin.com/company/shebuildshack" }
   ];
 
   const quickLinks = [
@@ -62,7 +61,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* QUICK LINKS BLOCK */}
+          {/* QUICK LINKS */}
           <div className="space-y-6">
             <h3 className="text-white font-bold text-lg">Quick Links</h3>
             <div className="grid grid-cols-2 gap-3">
@@ -83,7 +82,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* SOCIAL MEDIA BLOCK */}
+          {/* SOCIAL MEDIA */}
           <div className="space-y-6">
             <h3 className="text-white font-bold text-lg">Connect With Us</h3>
             <div className="flex flex-wrap gap-3">
@@ -114,22 +113,24 @@ export default function Footer() {
 
         <div className="h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent mb-8"></div>
 
+        {/* --- BOTTOM SECTION --- */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex items-center gap-2"
-        >
-          <img 
-            src={logo} 
-            alt="SheBuilds logo"
-            className="w-8 h-8 object-contain"
-          />
-          <span className="text-white font-bold text-lg">SheBuilds</span>
-        </motion.div>
+          {/* LOGO + NAME */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-2"
+          >
+            <img 
+              src={logo}
+              alt="SheBuilds logo"
+              className="w-8 h-8 object-contain"
+            />
+            <span className="text-white font-bold text-lg">SheBuilds</span>
+          </motion.div>
 
           {/* COPYRIGHT */}
           <motion.p

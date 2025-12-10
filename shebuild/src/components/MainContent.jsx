@@ -156,11 +156,7 @@ export default function MainContent() {
 
         {/* SUBTITLE */}
         <motion.div className="relative" variants={titleVariants}>
-          <motion.div 
-            className="mx-auto lg:mx-0 h-0.5 bg-gradient-to-r from-cyan-500 to-transparent mb-3"
-            variants={gradientLineVariants}
-          />
-
+     
           <motion.h2 
             className="text-sm sm:text-base md:text-xl font-custom text-gray-400 tracking-wide leading-relaxed"
           >

@@ -10,32 +10,39 @@ export default function Header() {
 
   const HERO_HIDE_THRESHOLD = 350; 
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScroll = window.scrollY;
+useEffect(() => {
+  const handleScroll = () => {
+    const currentScroll = window.scrollY;
 
-      setScrolled(currentScroll > 10);
-      if (window.innerWidth < 768) {
-        setShowHeader(true);
-        return;
-      }
+    // Add background when scrolling
+    setScrolled(currentScroll > 10);
 
-      if (currentScroll < HERO_HIDE_THRESHOLD) {
-        setShowHeader(true);
+    // MOBILE: Always show navbar
+    if (window.innerWidth < 768) {
+      setShowHeader(true);
+      return;
+    }
+
+    // DESKTOP: Hide only after hero section
+    if (currentScroll < HERO_HIDE_THRESHOLD) {
+      setShowHeader(true);
+    } else {
+      if (currentScroll > lastScroll) {
+        // scrolling down
+        setShowHeader(false);
       } else {
-        if (currentScroll > lastScroll) setShowHeader(false);
-        else setShowHeader(true);
+        // scrolling up
+        setShowHeader(true);
       }
+    }
 
-      setLastScroll(currentScroll);
-    };
+    setLastScroll(currentScroll);
+  };
 
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, [lastScroll]);
 
-    setShowHeader(true);
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScroll]);
 
   const navItems = [
     { label: "HOME", path: "#", icon: <FiHome /> },

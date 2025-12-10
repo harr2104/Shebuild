@@ -16,6 +16,7 @@ export default function App() {
       <div className="min-h-screen relative overflow-hidden">
         <BackgroundEffects />
         <div className="relative z-10 h-full flex flex-col">
+        <BackgroundEffects />
           <Header />
           <MainContent />
         </div>
