@@ -51,16 +51,13 @@ export default function Header() {
 
   return (
     <header
-      className={`
-        fixed top-0 left-0 right-0 z-50
-        pt-4 px-4 md:px-8 lg:px-16
-        transition-all duration-300
-        ${showHeader ? "translate-y-0" : "-translate-y-full"}
-        ${scrolled
-          ? "bg-gray-950/90 backdrop-blur-md border-b border-cyan-500/20 py-3"
-          : "bg-gray-950/70 backdrop-blur-sm py-4"
-        }
-      `}
+  className={`
+    fixed top-0 left-0 right-0 z-[9999]
+    pt-4 px-4 md:px-8 lg:px-16
+    transition-all duration-300
+    ${showHeader ? "translate-y-0" : "-translate-y-full"}
+    ${scrolled ? "bg-gray-950/90 backdrop-blur-md border-b border-cyan-500/20 py-3" : "bg-gray-950/70 backdrop-blur-sm py-4"}
+  `}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between md:justify-start gap-4 md:gap-8">
 
