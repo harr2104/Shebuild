@@ -1,5 +1,6 @@
 import { FiMail, FiPhone, FiMapPin, FiInstagram, FiTwitter, FiLinkedin, FiGithub, FiYoutube } from "react-icons/fi";
 import { motion } from "framer-motion";
+import logo from "../assets/Header_logo.png"; 
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -111,26 +112,24 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* DIVIDER */}
         <div className="h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent mb-8"></div>
 
-        {/* --- BOTTOM SECTION --- */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
 
-          {/* BRAND LOGO */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-2"
-          >
-            <div className="w-8 h-8 rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 
-              flex items-center justify-center shadow-md">
-              <span className="text-white font-bold text-xs">SB</span>
-            </div>
-            <span className="text-white font-bold text-lg">SheBuilds</span>
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center gap-2"
+        >
+          <img 
+            src={logo} 
+            alt="SheBuilds logo"
+            className="w-8 h-8 object-contain"
+          />
+          <span className="text-white font-bold text-lg">SheBuilds</span>
+        </motion.div>
 
           {/* COPYRIGHT */}
           <motion.p

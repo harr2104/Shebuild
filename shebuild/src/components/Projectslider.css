@@ -2,9 +2,10 @@
 .banner {
   position: relative;
   width: 100%;
-  height: 65vh; 
+  height: 63vh; 
   overflow: hidden;
   perspective: 1200px;
+
 }
 
 .slider {
@@ -121,6 +122,18 @@
 .arrow-right {
   right: -4px;
 }
+@media (max-width: 900px) {
+  .arrow-btn {
+    background: rgba(0, 0, 0, 0.35);   /* small dark bg */
+    padding: 6px;
+    border-radius: 50%;
+    backdrop-filter: blur(4px);
+  }
+
+  .arrow-btn:hover {
+    background: rgba(0, 0, 0, 0.55);
+  }
+}
 
 @media (max-width: 900px) {
   .desktop-carousel {
@@ -137,6 +150,66 @@
 }
 
 @media (max-width: 900px) {
+
+  .mobile-img.page-enter ~ .mobile-img-wrapper::before,
+  .mobile-img.page-exit ~ .mobile-img-wrapper::before,
+  .mobile-img.page-enter,
+  .mobile-img.page-exit {
+    opacity: 0 !important;
+  }
+  .mobile-img-wrapper {
+    position: relative;
+    border-radius: 18px;
+    overflow: visible; 
+  }
+
+  .mobile-img-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: -12px; 
+    border-radius: 22px;
+    z-index: 1;
+
+    background: conic-gradient(
+      from 0deg,
+      rgba(0, 255, 255, 0.6),
+      rgba(120, 0, 255, 0.6),
+      rgba(255, 0, 130, 0.6),
+      rgba(0, 255, 255, 0.6)
+    );
+
+    filter: blur(28px);
+    opacity: 0.45;
+    animation: glowPulse 4s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
+  @keyframes glowPulse {
+    0% {
+      opacity: 0.35;
+      transform: scale(0.97);
+      filter: blur(26px);
+    }
+    50% {
+      opacity: 0.48;
+      transform: scale(1);
+      filter: blur(28px);
+    }
+    100% {
+      opacity: 0.42;
+      transform: scale(1.03);
+      filter: blur(32px);
+    }
+  }
+  .mobile-img {
+    position: relative;
+    z-index: 5;
+    border-radius: 16px;
+  }
+}
+
+
+@media (max-width: 900px) {
   .desktop-carousel,
   .banner {
     display: none !important;
@@ -148,4 +221,29 @@
 
 .projects-slider-section {
   margin-top: 65px;
+}
+
+@media (max-width: 900px) {
+  .mobile-img.page-enter,
+  .mobile-img.page-exit {
+    z-index: 10; /* image above glow */
+  }
+
+  .mobile-img.page-enter ~ .mobile-img,
+  .mobile-img.page-exit ~ .mobile-img {
+    opacity: 0;
+  }
+
+  .mobile-img.page-enter,
+  .mobile-img.page-exit {
+    opacity: 0;
+  }
+
+  .mobile-img.page-enter ~ .mobile-img-wrapper::before,
+  .mobile-img.page-exit ~ .mobile-img-wrapper::before,
+  .mobile-img.page-enter ~ ::before,
+  .mobile-img.page-exit ~ ::before {
+    opacity: 0 !important;
+    filter: blur(0px) !important;
+  }
 }

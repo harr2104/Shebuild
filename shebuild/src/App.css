@@ -63,15 +63,8 @@
     opacity: 1;
   }
 }
-body {
-  padding-top: 80px; 
-}
-@supports(padding: max(0px)) {
-  body {
-    padding-top: max(80px, env(safe-area-inset-top));
-    padding-bottom: max(0px, env(safe-area-inset-bottom));
-  }
-}
+
+
 
 .animate-fadeIn {
   animation: fadeIn 0.2s ease-out forwards;
@@ -262,7 +255,7 @@ body {
   animation: sb-star-move 60s linear infinite;
 }
 
-/* Glow */
+
 .sb-glow {
   position: absolute;
   display: flex;
@@ -278,14 +271,13 @@ body {
 }
 
 .sb-circle:nth-child(1) {
-  background: rgba(56, 189, 248, 0.6); /* cyan */
+  background: rgba(56, 189, 248, 0.6); 
 }
 
 .sb-circle:nth-child(2) {
-  background: rgba(168, 85, 247, 0.6); /* purple */
+  background: rgba(168, 85, 247, 0.6); 
 }
 
-/* Hover Effects */
 .shebuilds-btn:hover {
   transform: scale(1.08);
 }
@@ -304,7 +296,6 @@ body {
   background: #a855f7;
 }
 
-/* Animations */
 @keyframes sb-star-move {
   from { transform: translateY(0); }
   to { transform: translateY(-130rem); }
@@ -328,4 +319,8 @@ body {
 }
 .su-sto{
   margin-top: 40px;
+}
+
+#whyattend{
+  margin-top: -40px;
 }

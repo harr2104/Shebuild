@@ -99,17 +99,15 @@ export default function MainContent() {
         "
       >
 
-        {/* TITLE */}
+{/* TITLE */}
         <motion.div className="relative" variants={titleVariants}>
           <h1 className="font-bold leading-none">
 
+            {/* LINE 1 */}
             <motion.span
               className="
-                block 
-                font-custom 
-                text-5xl 
-                sm:text-6xl 
-                md:text-7xl 
+                block font-custom 
+                text-5xl sm:text-6xl md:text-7xl 
                 bg-clip-text text-transparent 
                 bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 
                 animate-pulse
@@ -118,14 +116,11 @@ export default function MainContent() {
               CODE &
             </motion.span>
 
+            {/* LINE 2 */}
             <motion.span
               className="
-                block mt-2 
-                font-custom 
-                text-4xl 
-                sm:text-5xl 
-                md:text-6xl 
-                lg:text-7xl 
+                block mt-2 font-custom 
+                text-4xl sm:text-5xl md:text-6xl lg:text-7xl 
                 bg-clip-text text-transparent 
                 bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 
                 animate-pulse
@@ -133,20 +128,31 @@ export default function MainContent() {
             >
               CONNECT 3.0
             </motion.span>
-          {/* MOBILE REGISTER BUTTON */}
-          <div className="block md:hidden mt-4">
-            <button className="shebuilds-btn mx-auto">
-              <strong>CLICK TO REGISTER </strong>
-              <div className="sb-stars-container"><div className="sb-stars"></div></div>
-              <div className="sb-glow">
-                <div className="sb-circle"></div>
-                <div className="sb-circle"></div>
-              </div>
-            </button>
-          </div>
-
           </h1>
         </motion.div>
+
+        {/* SUBTITLE LINE — now BEFORE mobile button */}
+        <motion.div className="relative flex justify-center lg:justify-start" variants={titleVariants}>
+          <motion.div
+            className="h-0.5 bg-gradient-to-r from-cyan-500 to-transparent mb-2"
+            style={{ width: "140px" }}
+            variants={gradientLineVariants}
+          />
+        </motion.div>
+
+        {/* MOBILE REGISTER BUTTON (below line now) */}
+        <div className="block md:hidden mt-3 mb-2">
+          <button className="shebuilds-btn mx-auto">
+            <strong>CLICK TO REGISTER</strong>
+            <div className="sb-stars-container"><div className="sb-stars"></div></div>
+            <div className="sb-glow">
+              <div className="sb-circle"></div>
+              <div className="sb-circle"></div>
+            </div>
+          </button>
+        </div>
+
+         
 
         {/* SUBTITLE */}
         <motion.div className="relative" variants={titleVariants}>
