@@ -5,7 +5,7 @@
 .banner {
   position: relative;
   width: 100%;
-  height: 85vh;
+  height: 87vh; /* 🔼 slightly increased */
   overflow: hidden;
   perspective: 1200px;
 }
@@ -28,12 +28,12 @@
   transform:
     rotateY(calc(360deg / var(--quantity) * (var(--position) - 1)))
     rotateX(-6deg)
-    translateZ(590px);
+    translateZ(600px); 
 }
 
 .item img {
-  width: 430px;
-  height: 80%;
+  width: 480px;   
+  height: 95%;    
   object-fit: contain;
 }
 
@@ -42,50 +42,111 @@
   to { transform: translate(-50%, -50%) rotateY(360deg); }
 }
 
+
+
 /* ==========================
-   MOBILE AUTO SLIDER
+   ⭐ MOBILE PAGE-TURN SLIDER
 ========================== */
 
 .mobile-slider {
   display: none;
   width: 100%;
   margin-top: 20px;
-  padding: 0 20px;
+  padding: 0 16px;
 }
 
-.mobile-card {
-  width: 100%;
+.mobile-slider-container {
+  position: relative;
   max-width: 480px;
   margin: 0 auto;
-  background: rgba(30, 41, 59, 0.45);
-  backdrop-filter: blur(8px);
-  border-radius: 18px;
-  padding: 16px;
-  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.mobile-img-wrapper {
+  width: 100%;
+  height: 330px;  /* 🔼 slightly increased */
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+
+  /* ⭐ Subtle gradient background */
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 255, 0.12),
+    rgba(120, 0, 255, 0.12)
+  );
 }
 
 .mobile-img {
   width: 100%;
-  height: 280px;  /* FIXED HEIGHT */
-  object-fit: cover;  /* Looks natural */
-  border-radius: 14px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+
+  /* ⭐ Page-turn transition */
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), 
+              opacity 0.5s ease;
 }
 
+/* Page-turn animation states */
+.page-enter {
+  transform: translateX(60px) rotateY(-18deg);
+  opacity: 0;
+}
+.page-enter-active {
+  transform: translateX(0) rotateY(0deg);
+  opacity: 1;
+}
+.page-exit {
+  transform: translateX(-60px) rotateY(18deg);
+  opacity: 0;
+}
+
+
+
 /* ==========================
-   HIDE 3D CAROUSEL ON MOBILE
+   ARROWS
+========================== */
+
+.arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 26px;  /* 🔼 slightly bigger */
+  color: #ffffffd5;
+  cursor: pointer;
+  z-index: 30;
+  padding: 4px;
+  transition: 0.2s ease;
+}
+
+.arrow-btn:hover {
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.18);
+}
+
+.arrow-left {
+  left: -4px;
+}
+
+.arrow-right {
+  right: -4px;
+}
+
+
+
+/* ==========================
+   RESPONSIVE BEHAVIOR
 ========================== */
 
 @media (max-width: 900px) {
   .desktop-carousel {
     display: none !important;
   }
+
   .mobile-slider {
     display: block;
   }
-}
 
-/* Remove background on mobile */
-@media (max-width: 900px) {
   .slider-section {
     background: transparent !important;
   }

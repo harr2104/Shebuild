@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import "./Projectslider.css";
 
 import img1 from "../assets/ProjectSlider/img1.png";
@@ -12,29 +13,45 @@ export default function ProjectsSlider() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
-  const projects = [img1, img2, img3, img4, img5];
-
-  /* =============================
-        MOBILE AUTO SLIDER LOGIC
-  ============================= */
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % projects.length);
-    }, 4000); // 4 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.7 } }
   };
 
+  const images = [img1, img2, img3, img4, img5];
+
+  const [index, setIndex] = useState(0);
+  const [animClass, setAnimClass] = useState("");
+
+  const nextSlide = () => {
+    setAnimClass("page-exit");
+    setTimeout(() => {
+      setIndex((i) => (i + 1) % images.length);
+      setAnimClass("page-enter");
+    }, 120);
+
+    setTimeout(() => setAnimClass(""), 600);
+  };
+
+  const prevSlide = () => {
+    setAnimClass("page-exit");
+    setTimeout(() => {
+      setIndex((i) => (i - 1 + images.length) % images.length);
+      setAnimClass("page-enter");
+    }, 120);
+
+    setTimeout(() => setAnimClass(""), 600);
+  };
+
+  // Auto slide every 4 seconds
+  useEffect(() => {
+    const auto = setInterval(nextSlide, 4000);
+    return () => clearInterval(auto);
+  }, []);
+
   return (
     <>
-      {/* HEADER */}
+      {/* Header */}
       <motion.div
         ref={ref}
         initial="hidden"
@@ -60,38 +77,41 @@ export default function ProjectsSlider() {
         >
           SheBuilds Success
         </h2>
-
-        <div className="mx-auto w-32 sm:w-40 h-0.5 bg-gradient-to-r 
-          from-transparent via-cyan-500 to-transparent mb-3"
-        />
-
-        <p className="text-gray-400 text-sm sm:text-base md:text-lg font-custom max-w-xl mx-auto px-4">
-          A showcase of our most impactful journeys and achievements.
-        </p>
       </motion.div>
 
-      {/* DESKTOP 3D CAROUSEL (unchanged) */}
-      <div className="banner desktop-carousel">
-        <div className="slider" style={{ "--quantity": projects.length }}>
-          {projects.map((img, i) => (
-            <div key={i} className="item" style={{ "--position": i + 1 }}>
-              <img src={img} alt="success" />
-            </div>
-          ))}
+      {/* DESKTOP 3D CAROUSEL */}
+      <div className="desktop-carousel">
+        <div className="banner">
+          <div className="slider" style={{ "--quantity": images.length }}>
+            {images.map((img, i) => (
+              <div key={i} className="item" style={{ "--position": i + 1 }}>
+                <img src={img} alt={`slide-${i}`} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* MOBILE SIMPLE SLIDER */}
+      {/* MOBILE SLIDER */}
       <div className="mobile-slider">
-        <motion.div
-          key={current}
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          className="mobile-card"
-        >
-          <img src={projects[current]} className="mobile-img" />
-        </motion.div>
+        <div className="mobile-slider-container">
+
+          {/* Left Arrow */}
+          <FiChevronLeft className="arrow-btn arrow-left" onClick={prevSlide} />
+
+          {/* Image */}
+          <div className="mobile-img-wrapper">
+            <img
+              src={images[index]}
+              className={`mobile-img ${animClass}`}
+              alt="mobile-slide"
+            />
+          </div>
+
+          {/* Right Arrow */}
+          <FiChevronRight className="arrow-btn arrow-right" onClick={nextSlide} />
+
+        </div>
       </div>
     </>
   );
