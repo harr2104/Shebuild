@@ -1,0 +1,129 @@
+.banner {
+  position: relative;
+  width: 100%;
+  height: 85vh;
+  overflow: hidden;
+  perspective: 1200px;
+}
+
+/* Slider core remains unchanged */
+.slider {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: 39%;
+  left: 50%;
+  transform-style: preserve-3d;
+  transform: translate(-50%, -50%);
+  animation: spin 20s linear infinite;
+}
+
+.item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform:
+    rotateY(calc(360deg / var(--quantity) * (var(--position) - 1)))
+    rotateX(-6deg)
+    translateZ(590px);
+}
+
+.item img {
+  width: 400px;
+  height: 80%;
+  object-fit: contain;
+  border-radius: 0px;
+}
+
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotateY(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateY(360deg);
+  }
+}
+
+/* ⭐ TEXT CONTENT MASK — unchanged */
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  transform: translate(-50%, -50%) translateZ(-200px);
+
+  mask-image: radial-gradient(circle, transparent 0%, transparent 35%, black 70%);
+  -webkit-mask-image: radial-gradient(circle, transparent 0%, transparent 35%, black 70%);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+
+  text-align: center;
+}
+
+.content h1,
+.content h2,
+.content p {
+  color: white;
+  pointer-events: none;
+}
+.item img {
+  width: 490px;
+  height: 80%;
+  object-fit: contain;
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+
+  .banner {
+    height: 70vh;
+  }
+
+  .slider {
+    width: 240px;   /* Slightly reduced slider box */
+    height: 240px;
+    top: 48%;
+  }
+
+  .item img {
+    width: 320px;   /* Keep big size but scale down just enough */
+    height: 75%;
+  }
+}
+
+/* Larger phones (480–640px) */
+@media (max-width: 640px) and (min-width: 480px) {
+
+  .banner {
+    height: 75vh;
+  }
+
+  .slider {
+    width: 260px;
+    height: 260px;
+  }
+
+  .item img {
+    width: 360px;   /* STILL BIG like desktop */
+    height: 75%;
+  }
+}
+
+/* Tablets (641–1024px) */
+@media (max-width: 1024px) and (min-width: 641px) {
+
+  .banner {
+    height: 80vh;
+  }
+
+  .slider {
+    width: 290px;
+    height: 290px;
+  }
+
+  .item img {
+    width: 400px;   /* full-size restored */
+    height: 80%;
+  }
+}
