@@ -67,52 +67,36 @@ export default function WhyAttend() {
   return (
     <section
       id="whyattend"
-      className="
-        relative 
-        py-1          
-        sm:py-12 
-        md:py-14 
-        px-4 sm:px-6 md:px-8 lg:px-16 
-        overflow-hidden
-      "
+      className="relative py-10 sm:py-14 md:py-16 px-4 sm:px-6 md:px-8 lg:px-16 overflow-hidden"
     >
-      {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-      w-full max-w-4xl h-80 bg-gradient-to-r 
+      w-full max-w-4xl h-96 bg-gradient-to-r 
       from-cyan-500/10 via-purple-500/10 to-blue-500/10 
       rounded-full blur-3xl"></div>
 
       <div ref={ref} className="relative z-10 max-w-6xl mx-auto">
 
-        {/* Section Header */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="
-            text-center 
-            mb-8        /* ↓ Reduced from 14 */
-            sm:mb-10    
-            md:mb-12
-            px-2
-          "
+          className="text-center mb-6 sm:mb-10 md:mb-14 px-2"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="inline-flex items-center gap-2 px-4 py-2 
-              bg-gray-900/50 backdrop-blur-sm rounded-lg border border-blue-500/30 mb-3"
+            bg-gray-900/50 backdrop-blur-sm rounded-lg border border-blue-500/30 mb-4"
           >
             <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-            <span className="text-blue-400 font-mono text-sm tracking-wider">
-              WHY_ATTEND
-            </span>
+            <span className="text-blue-400 font-mono text-sm tracking-wider">WHY_ATTEND</span>
           </motion.div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-clip-text text-transparent font-custom 
-              bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400">
+            bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400">
               Your Journey
             </span>
           </h2>
@@ -122,23 +106,21 @@ export default function WhyAttend() {
             animate={isInView ? { opacity: 1, width: "200px" } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mx-auto h-0.5 bg-gradient-to-r 
-              from-transparent via-cyan-500 to-transparent mb-3"
+            from-transparent via-cyan-500 to-transparent mb-4"
           />
 
-          <p className="text-gray-400 text-base sm:text-lg max-w-xl mx-auto">
+          <p className="text-gray-400 text-base sm:text-lg max-w-xl mx-auto font-custom leading-relaxed">
             Transform your career through this 4-step immersive experience
           </p>
         </motion.div>
 
-        {/* Steps Section */}
+        {/* Steps */}
         <div className="relative">
-
           <div className="absolute top-1/2 left-0 right-0 h-0.5 
           bg-gradient-to-r from-cyan-500 via-purple-500 to-blue-500 
           transform -translate-y-1/2 hidden md:block"></div>
 
-          {/* Step Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-6 md:gap-8">
             {steps.map((step, index) => {
               const color = colorMap[step.color];
 
@@ -148,13 +130,14 @@ export default function WhyAttend() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: index * 0.2 }}
+                  className="relative"
                 >
                   {/* Number Circle */}
                   <div
-                    className={`absolute -top-6 left-1/2 transform -translate-x-1/2 
-                      w-10 h-10 sm:w-12 sm:h-12 rounded-full 
-                      bg-gradient-to-r ${color.circle}
-                      flex items-center justify-center border-4 border-gray-950`}
+                    className={`absolute -top-4 sm:-top-6 left-1/2 transform -translate-x-1/2 
+                    w-10 h-10 sm:w-12 sm:h-12 rounded-full 
+                    bg-gradient-to-r ${color.circle}
+                    flex items-center justify-center border-4 border-gray-950 z-10`}
                   >
                     <span className="text-white text-xs sm:text-sm font-bold font-custom">
                       {step.step}
@@ -164,25 +147,27 @@ export default function WhyAttend() {
                   {/* Card */}
                   <div
                     className={`
-                      mt-8
+                      mt-6 sm:mt-8
                       bg-gray-900/40 backdrop-blur-md rounded-2xl 
-                      p-5 
+                      p-5 sm:p-6 md:p-6 
                       ${color.border}
                       text-center group hover:scale-105 transition-all duration-300
-                      min-h-[200px]   /* ↓ reduced height */
+                      flex flex-col justify-between
+                      min-h-[220px] sm:min-h-[240px] md:min-h-[260px]
                     `}
                   >
                     <div
                       className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full 
                       bg-gradient-to-r ${color.bg}
-                      mx-auto mb-4 flex items-center justify-center`}
+                      mx-auto mb-4 flex items-center justify-center 
+                      group-hover:scale-110 transition-transform duration-300`}
                     >
                       <div className={`text-xl sm:text-2xl ${color.text}`}>
                         {step.icon}
                       </div>
                     </div>
 
-                    <h3 className="text-base sm:text-lg font-bold text-white mb-2">
+                    <h3 className="text-base sm:text-lg font-bold text-white mb-2 font-custom">
                       {step.title}
                     </h3>
 
@@ -195,7 +180,6 @@ export default function WhyAttend() {
             })}
           </div>
         </div>
-
       </div>
     </section>
   );

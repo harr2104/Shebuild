@@ -66,6 +66,12 @@
 body {
   padding-top: 80px; 
 }
+@supports(padding: max(0px)) {
+  body {
+    padding-top: max(80px, env(safe-area-inset-top));
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+  }
+}
 
 .animate-fadeIn {
   animation: fadeIn 0.2s ease-out forwards;
@@ -171,8 +177,11 @@ body {
   background-color: transparent !important;
 }
 
-/* ===== SHEBUILDS CTA BUTTON ===== */
-
+@media (max-width: 640px) {
+  .sponsor-title-block {
+    padding-top: 32px; 
+  }
+}
 .shebuilds-btn {
   position: relative;
   display: flex;

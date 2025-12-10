@@ -8,21 +8,18 @@ export default function Header() {
   const [showHeader, setShowHeader] = useState(true);
   const [lastScroll, setLastScroll] = useState(0);
 
-  const HERO_HIDE_THRESHOLD = 350; // laptop/desktop only
+  const HERO_HIDE_THRESHOLD = 350; 
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
 
       setScrolled(currentScroll > 10);
-
-      // ⭐ MOBILE BEHAVIOR — navbar ALWAYS visible
       if (window.innerWidth < 768) {
         setShowHeader(true);
         return;
       }
 
-      // ⭐ DESKTOP BEHAVIOR — hide only after hero
       if (currentScroll < HERO_HIDE_THRESHOLD) {
         setShowHeader(true);
       } else {
@@ -33,7 +30,7 @@ export default function Header() {
       setLastScroll(currentScroll);
     };
 
-    // Always show on page load
+
     setShowHeader(true);
 
     window.addEventListener("scroll", handleScroll);
@@ -61,13 +58,11 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between md:justify-start gap-4 md:gap-8">
 
-        {/* Logo */}
         <div className="flex items-center gap-2">
           <img src={logo} alt="SheBuilds logo" className="w-15 h-12 object-contain" />
           <span className="text-cyan-400 font-mono text-sm tracking-widest">SHEBUILDS</span>
         </div>
 
-        {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-6">
           {navItems.map((item) => (
             <a
@@ -91,7 +86,6 @@ export default function Header() {
           ))}
         </div>
 
-        {/* Desktop Register Button */}
         <div className="hidden md:block ml-auto">
           <button className="shebuilds-btn">
             <strong>REGISTER NOW</strong>
@@ -103,7 +97,6 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile Toggle */}
         <button 
           className="md:hidden text-cyan-400 text-2xl"
           onClick={() => setOpen(!open)}
@@ -111,8 +104,6 @@ export default function Header() {
           {open ? <FiX /> : <FiMenu />}
         </button>
       </div>
-
-      {/* Mobile Menu */}
       {open && (
         <div className="md:hidden mt-4 bg-gray-900/95 backdrop-blur-lg rounded-lg border border-gray-800 shadow-xl overflow-hidden">
           <div className="p-3 space-y-1">
@@ -139,7 +130,6 @@ export default function Header() {
               </a>
             ))}
 
-            {/* Mobile Register Button */}
             <div className="pt-3 border-t border-gray-800/50">
               <button className="
                 w-full px-4 py-3 rounded-lg border border-cyan-500/30

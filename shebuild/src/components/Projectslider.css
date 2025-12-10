@@ -1,11 +1,8 @@
-/* ==========================
-   DESKTOP 3D CAROUSEL
-========================== */
 
 .banner {
   position: relative;
   width: 100%;
-  height: 87vh; /* 🔼 slightly increased */
+  height: 65vh; 
   overflow: hidden;
   perspective: 1200px;
 }
@@ -36,6 +33,11 @@
   height: 95%;    
   object-fit: contain;
 }
+.img-small {
+  height: 70% !important;   /* adjust as needed: 60%, 50%, etc. */
+  width: auto !important;
+  object-fit: contain;
+}
 
 @keyframes spin {
   from { transform: translate(-50%, -50%) rotateY(0deg); }
@@ -43,10 +45,6 @@
 }
 
 
-
-/* ==========================
-   ⭐ MOBILE PAGE-TURN SLIDER
-========================== */
 
 .mobile-slider {
   display: none;
@@ -63,12 +61,11 @@
 
 .mobile-img-wrapper {
   width: 100%;
-  height: 330px;  /* 🔼 slightly increased */
+  height: 330px;  
   border-radius: 16px;
   overflow: hidden;
   position: relative;
 
-  /* ⭐ Subtle gradient background */
   background: linear-gradient(
     135deg,
     rgba(0, 255, 255, 0.12),
@@ -82,12 +79,10 @@
   object-fit: cover;
   border-radius: 16px;
 
-  /* ⭐ Page-turn transition */
   transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), 
               opacity 0.5s ease;
 }
 
-/* Page-turn animation states */
 .page-enter {
   transform: translateX(60px) rotateY(-18deg);
   opacity: 0;
@@ -102,16 +97,11 @@
 }
 
 
-
-/* ==========================
-   ARROWS
-========================== */
-
 .arrow-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 26px;  /* 🔼 slightly bigger */
+  font-size: 26px; 
   color: #ffffffd5;
   cursor: pointer;
   z-index: 30;
@@ -132,12 +122,6 @@
   right: -4px;
 }
 
-
-
-/* ==========================
-   RESPONSIVE BEHAVIOR
-========================== */
-
 @media (max-width: 900px) {
   .desktop-carousel {
     display: none !important;
@@ -150,4 +134,18 @@
   .slider-section {
     background: transparent !important;
   }
+}
+
+@media (max-width: 900px) {
+  .desktop-carousel,
+  .banner {
+    display: none !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin-bottom: 0px !important;
+  }
+}
+
+.projects-slider-section {
+  margin-top: 65px;
 }

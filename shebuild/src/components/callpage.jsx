@@ -130,7 +130,7 @@ export default function CallPage() {
             <div className="flex flex-col lg:flex-row items-start gap-6 sm:gap-8">
               
               {/* LEFT SECTION */}
-              <div className="lg:w-2/3">
+              <div className="lg:w-2/3 sponsor-title-block">
                 <motion.div variants={slideInLeft} className="flex items-center gap-4 mb-4 sm:mb-6">
                   <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl 
                   bg-gradient-to-r from-cyan-500/20 to-blue-500/20 

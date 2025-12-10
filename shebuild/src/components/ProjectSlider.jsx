@@ -43,7 +43,6 @@ export default function ProjectsSlider() {
     setTimeout(() => setAnimClass(""), 600);
   };
 
-  // Auto slide every 4 seconds
   useEffect(() => {
     const auto = setInterval(nextSlide, 4000);
     return () => clearInterval(auto);
@@ -51,17 +50,17 @@ export default function ProjectsSlider() {
 
   return (
     <>
-      {/* Header */}
+   
       <motion.div
         ref={ref}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={fadeUp}
-        className="text-center mb-10 sm:mb-12 px-4"
+        className="text-center mb-10 sm:mb-12 px-4 "
       >
         <div
           id="projects"
-          className="inline-flex items-center gap-2 px-4 py-2 
+          className="inline-flex items-center gap-2 px-4 py-2 projects-slider-section
           bg-gray-900/50 backdrop-blur-sm rounded-lg border border-blue-500/30 mb-4"
         >
           <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
@@ -85,18 +84,17 @@ export default function ProjectsSlider() {
           <div className="slider" style={{ "--quantity": images.length }}>
             {images.map((img, i) => (
               <div key={i} className="item" style={{ "--position": i + 1 }}>
-                <img src={img} alt={`slide-${i}`} />
+                <img src={img} alt={`slide-${i}`} className={i === 4 ? "img-small" : ""}/>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* MOBILE SLIDER */}
+  
       <div className="mobile-slider">
         <div className="mobile-slider-container">
 
-          {/* Left Arrow */}
           <FiChevronLeft className="arrow-btn arrow-left" onClick={prevSlide} />
 
           {/* Image */}
