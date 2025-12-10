@@ -7,28 +7,30 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
   const [lastScroll, setLastScroll] = useState(0);
-  const [firstLoad, setFirstLoad] = useState(true);
+
+  // 👇 HERO HEIGHT (after this point navbar can hide)
+  const HERO_HIDE_THRESHOLD = 350;
 
   useEffect(() => {
-    // Always show navbar for the first 300ms
-    setShowHeader(true);
-
-    const timer = setTimeout(() => {
-      setFirstLoad(false);
-    }, 300);
+    let allowHide = false; // prevents early hide during load
 
     const handleScroll = () => {
       const currentScroll = window.scrollY;
 
-      if (!firstLoad) {
-        if (currentScroll < 10) {
-          setShowHeader(true);
+      // Mark hero passed
+      if (currentScroll > HERO_HIDE_THRESHOLD) {
+        allowHide = true;
+      }
+
+      // Always show before hero is passed
+      if (!allowHide) {
+        setShowHeader(true);
+      } else {
+        // Hide only when scrolling down after hero
+        if (currentScroll > lastScroll) {
+          setShowHeader(false);
         } else {
-          if (currentScroll > lastScroll) {
-            setShowHeader(false); // scrolling DOWN → hide
-          } else {
-            setShowHeader(true); // scrolling UP → show
-          }
+          setShowHeader(true);
         }
       }
 
@@ -36,13 +38,12 @@ export default function Header() {
       setScrolled(currentScroll > 10);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // Always shown on load
+    setShowHeader(true);
 
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [lastScroll, firstLoad]);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScroll]);
 
   const navItems = [
     { label: "HOME", path: "#", icon: <FiHome /> },
@@ -60,7 +61,7 @@ export default function Header() {
         pt-4 px-4 md:px-8 lg:px-16
         transition-all duration-300
         ${showHeader ? "translate-y-0" : "-translate-y-full"}
-        ${scrolled 
+        ${scrolled
           ? "bg-gray-950/90 backdrop-blur-md border-b border-cyan-500/20 py-3"
           : "bg-gray-950/70 backdrop-blur-sm py-4"
         }
@@ -69,33 +70,36 @@ export default function Header() {
       <div className="max-w-7xl mx-auto flex items-center justify-between md:justify-start gap-4 md:gap-8">
 
         {/* Logo */}
-        <div className="flex items-center gap-4 md:gap-10">
-          <div className="flex items-center gap-2">
-            <img src={logo} alt="SheBuilds logo" className="w-15 h-12 object-contain" />
-            <span className="text-cyan-400 font-mono text-sm tracking-widest">SHEBUILDS</span>
-          </div>
+        <div className="flex items-center gap-2">
+          <img src={logo} alt="SheBuilds logo" className="w-15 h-12 object-contain" />
+          <span className="text-cyan-400 font-mono text-sm tracking-widest">SHEBUILDS</span>
+        </div>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-6">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.path}
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.querySelector(item.path)?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="
-                  text-gray-400 text-sm font-custom hover:text-cyan-400
-                  transition flex items-center gap-1 group relative
-                "
-              >
-                <span className="text-cyan-500/60">//</span>
-                {item.label}
-                <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-cyan-400 group-hover:w-full transition-all duration-300"></div>
-              </a>
-            ))}
-          </div>
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-6">
+          {navItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.path}
+              onClick={(e) => {
+                e.preventDefault();
+                document.querySelector(item.path)?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="
+                text-gray-400 
+                text-sm 
+                font-custom 
+                hover:text-cyan-400 
+                transition
+                flex items-center gap-1
+                group relative
+              "
+            >
+              <span className="text-cyan-500/60">//</span>
+              {item.label}
+              <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-cyan-400 group-hover:w-full transition-all duration-300"></div>
+            </a>
+          ))}
         </div>
 
         {/* Register Button */}
@@ -110,21 +114,19 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Toggle */}
         <button 
           className="md:hidden text-cyan-400 text-2xl"
           onClick={() => setOpen(!open)}
         >
           {open ? <FiX /> : <FiMenu />}
         </button>
-
       </div>
 
-      {/* Mobile Dropdown */}
+      {/* Mobile Menu */}
       {open && (
         <div className="md:hidden mt-4 bg-gray-900/95 backdrop-blur-lg rounded-lg border border-gray-800 shadow-xl overflow-hidden">
           <div className="p-3 space-y-1">
-
             {navItems.map((item) => (
               <a
                 key={item.label}
@@ -146,22 +148,8 @@ export default function Header() {
                   <span className="text-cyan-500/70">{item.icon}</span>
                   <span>// {item.label}</span>
                 </div>
-                <div className="w-1.5 h-1.5 rounded-full bg-cyan-400/50"></div>
               </a>
             ))}
-
-            {/* Mobile Register */}
-            <div className="pt-3 border-t border-gray-800/50">
-              <button className="
-                w-full px-4 py-3 
-                rounded-lg border border-cyan-500/30
-                bg-gradient-to-r from-cyan-500/20 to-purple-500/20 
-                text-cyan-400 text-sm font-mono
-              ">
-                REGISTER FOR EVENT
-              </button>
-            </div>
-
           </div>
         </div>
       )}
