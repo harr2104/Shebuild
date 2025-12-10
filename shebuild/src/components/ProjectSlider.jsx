@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import "./Projectslider.css";
 
@@ -11,26 +11,30 @@ import img5 from "../assets/ProjectSlider/img5.png";
 export default function ProjectsSlider() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
-  const [mobileIndex, setMobileIndex] = useState(0);
+
+  const projects = [img1, img2, img3, img4, img5];
+
+  /* =============================
+        MOBILE AUTO SLIDER LOGIC
+  ============================= */
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % projects.length);
+    }, 4000); // 4 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.7 } }
   };
 
-  const projects = [img1, img2, img3, img4, img5];
-
-  // 👉 Auto-slide for mobile
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setMobileIndex((prev) => (prev + 1) % projects.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <>
-      {/* Header */}
+      {/* HEADER */}
       <motion.div
         ref={ref}
         initial="hidden"
@@ -66,22 +70,28 @@ export default function ProjectsSlider() {
         </p>
       </motion.div>
 
-      {/* DESKTOP 3D CAROUSEL */}
-      <div className="banner desktop-slider">
+      {/* DESKTOP 3D CAROUSEL (unchanged) */}
+      <div className="banner desktop-carousel">
         <div className="slider" style={{ "--quantity": projects.length }}>
           {projects.map((img, i) => (
             <div key={i} className="item" style={{ "--position": i + 1 }}>
-              <img src={img} />
+              <img src={img} alt="success" />
             </div>
           ))}
         </div>
       </div>
 
-      {/* MOBILE CARD SLIDER (auto changing) */}
-      <div className="mobile-slider px-6 py-8">
-        <div className="mobile-card">
-          <img src={projects[mobileIndex]} className="mobile-img" />
-        </div>
+      {/* MOBILE SIMPLE SLIDER */}
+      <div className="mobile-slider">
+        <motion.div
+          key={current}
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="mobile-card"
+        >
+          <img src={projects[current]} className="mobile-img" />
+        </motion.div>
       </div>
     </>
   );
