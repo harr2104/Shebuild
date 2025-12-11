@@ -25,10 +25,9 @@ export default function ProjectsSlider() {
 
   return (
     <>
-      {/* ⭐ WRAPPER WITH RESPONSIVE BACKGROUND (Desktop / Tablet / Mobile) */}
       <div className="slider-section">
 
-        {/* TITLE + HEADER */}
+        {/* HEADER */}
         <motion.div
           ref={ref}
           initial="hidden"
@@ -38,7 +37,7 @@ export default function ProjectsSlider() {
         >
           <div
             id="projects"
-            className="inline-flex items-center gap-2 px-4 py-2 projects-slider-section
+            className="inline-flex items-center gap-2 px-4 py-2
             bg-gray-900/50 backdrop-blur-sm rounded-lg border border-blue-500/30 mb-4"
           >
             <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
@@ -47,16 +46,14 @@ export default function ProjectsSlider() {
             </span>
           </div>
 
-          <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-bold font-custom mb-4
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-custom mb-4
             bg-clip-text text-transparent bg-gradient-to-r
-            from-cyan-400 via-purple-400 to-cyan-400"
-          >
+            from-cyan-400 via-purple-400 to-cyan-400">
             SheBuilds Success
           </h2>
         </motion.div>
 
-        {/* ⭐ UNIVERSAL 3D CAROUSEL (same for desktop, tablet, mobile) */}
+        {/* 3D CAROUSEL */}
         <div className="desktop-carousel">
           <div className="banner">
             <div className="slider" style={{ "--quantity": images.length }}>
