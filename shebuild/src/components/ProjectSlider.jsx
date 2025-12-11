@@ -1,6 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import "./Projectslider.css";
 
 import img1 from "../assets/ProjectSlider/img1.png";
@@ -15,49 +14,27 @@ export default function ProjectsSlider() {
 
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7 } }
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7 }
+    }
   };
 
   const images = [img1, img2, img3, img4, img5];
-  const [index, setIndex] = useState(0);
-  const [animClass, setAnimClass] = useState("");
-
-  const nextSlide = () => {
-    setAnimClass("page-exit");
-    setTimeout(() => {
-      setIndex((i) => (i + 1) % images.length);
-      setAnimClass("page-enter");
-    }, 120);
-
-    setTimeout(() => setAnimClass(""), 600);
-  };
-
-  const prevSlide = () => {
-    setAnimClass("page-exit");
-    setTimeout(() => {
-      setIndex((i) => (i - 1 + images.length) % images.length);
-      setAnimClass("page-enter");
-    }, 120);
-
-    setTimeout(() => setAnimClass(""), 600);
-  };
-
-  useEffect(() => {
-    const auto = setInterval(nextSlide, 4000);
-    return () => clearInterval(auto);
-  }, []);
 
   return (
     <>
-      {/* ⭐⭐ WRAPPER ADDED — NOTHING ELSE CHANGED */}
+      {/* ⭐ WRAPPER WITH RESPONSIVE BACKGROUND (Desktop / Tablet / Mobile) */}
       <div className="slider-section">
 
+        {/* TITLE + HEADER */}
         <motion.div
           ref={ref}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={fadeUp}
-          className="text-center mb-10 sm:mb-12 px-4 "
+          className="text-center mb-10 sm:mb-12 px-4"
         >
           <div
             id="projects"
@@ -71,49 +48,36 @@ export default function ProjectsSlider() {
           </div>
 
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-bold font-custom mb-4 
-            bg-clip-text text-transparent bg-gradient-to-r 
+            className="text-3xl sm:text-4xl md:text-5xl font-bold font-custom mb-4
+            bg-clip-text text-transparent bg-gradient-to-r
             from-cyan-400 via-purple-400 to-cyan-400"
           >
             SheBuilds Success
           </h2>
         </motion.div>
 
-        {/* DESKTOP 3D CAROUSEL */}
+        {/* ⭐ UNIVERSAL 3D CAROUSEL (same for desktop, tablet, mobile) */}
         <div className="desktop-carousel">
           <div className="banner">
             <div className="slider" style={{ "--quantity": images.length }}>
-              {images.map((img, i) => (
-                <div key={i} className="item" style={{ "--position": i + 1 }}>
-                  <img src={img} alt={`slide-${i}`} className={i === 4 ? "img-small" : ""} />
+              {images.map((img, index) => (
+                <div
+                  key={index}
+                  className="item"
+                  style={{ "--position": index + 1 }}
+                >
+                  <img
+                    src={img}
+                    alt={`slide-${index}`}
+                    className={index === 4 ? "img-small" : ""}
+                  />
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* MOBILE CAROUSEL */}
-        <div className="mobile-slider">
-          <div className="mobile-slider-container">
-
-            <FiChevronLeft className="arrow-btn arrow-left" onClick={prevSlide} />
-
-            <div className="mobile-img-wrapper">
-              <img
-                src={images[index]}
-                className={`mobile-img ${animClass}`}
-                alt="mobile-slide"
-              />
-            </div>
-
-            <FiChevronRight className="arrow-btn arrow-right" onClick={nextSlide} />
-
-          </div>
-        </div>
-
       </div>
-      {/* ⭐⭐ END WRAPPER */}
-
     </>
   );
 }
