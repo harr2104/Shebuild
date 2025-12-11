@@ -1,6 +1,7 @@
-/* ================================
+/* ======================================
    🔥 BACKGROUND — APPLIED ONLY TO .banner
-   ================================ */
+   ====================================== */
+
 .banner {
   position: relative;
   width: 100%;
@@ -8,37 +9,43 @@
   overflow: hidden;
   perspective: 1200px;
 
-  /* default desktop bg */
+  /* Default Desktop Background */
   background-image: url('/shebuilds.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-/* Tablet Background */
+/* 🔵 TABLET VIEW */
 @media (max-width: 1024px) and (min-width: 601px) {
   .banner {
+    background: none !important; /* remove desktop bg fully */
     background-image: url('/shebuilds_tablet.png') !important;
+    background-size: cover;
+    background-position: center;
   }
 }
 
-/* Mobile Background */
+/* 🟣 MOBILE VIEW */
 @media (max-width: 600px) {
   .banner {
+    background: none !important; /* remove desktop bg fully */
     background-image: url('/shebuilds_mb.png') !important;
+    background-size: cover;
+    background-position: center;
   }
 }
 
-/* REMOVE ALL BACKGROUND FROM .slider-section */
+/* Slider section wrapper (NO background here anymore) */
 .slider-section {
   width: 100%;
 }
 
 
 
-/* ================================
+/* ======================================
    🔥 3D CAROUSEL STYLES
-   ================================ */
+   ====================================== */
 
 .slider {
   position: absolute;
@@ -80,9 +87,9 @@
 
 
 
-/* ================================
-   🔥 TABLET VIEW TWEAKS
-   ================================ */
+/* ======================================
+   🔵 TABLET VIEW ADJUSTMENTS
+   ====================================== */
 
 @media (max-width: 1024px) {
   .banner {
@@ -109,9 +116,9 @@
 
 
 
-/* ================================
-   🔥 MOBILE VIEW TWEAKS
-   ================================ */
+/* ======================================
+   🟣 MOBILE VIEW ADJUSTMENTS
+   ====================================== */
 
 @media (max-width: 600px) {
   .banner {
