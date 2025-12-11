@@ -1,31 +1,47 @@
-/* ===========================
-   DEVICE-SPECIFIC BACKGROUNDS
-   =========================== */
+
 .slider-section {
   background-image: url('/shebuilds.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding-top: 40px;
-  margin-top: 40px;
+  margin-top: 70px;
+  position: relative;
 }
 
-/* Tablet BG */
-@media (max-width: 1024px) {
-  .slider-section {
-    background-image: url('/shebuilds_tablet.png') !important;
-  }
+.carousel-center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+  z-index: 0; 
+  display: none;
 }
 
-/* Mobile BG */
-@media (max-width: 640px) {
-  .slider-section {
-    background-image: url('/shebuilds_mb.png') !important;
-  }
+.img-four {
+  height: 230px !important;
+  margin-top: 25px;
+  
+}
+.mobile-title {
+  font-size: 125px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+}
+
+.mobile-subtext {
+  font-size: 20px;
+  margin-top: 10px;
+  color: white;
+  opacity: 0.9;
+  font-family: "Georgia", serif;
 }
 
 /* ===========================
-       3D CAROUSEL BASE
+   3D CAROUSEL BASE
    =========================== */
 .carousel-wrapper {
   width: 100%;
@@ -37,8 +53,8 @@
 .banner {
   position: relative;
   width: 100%;
-  height: 70vh;
-  overflow: visible; /* fixes hollow gap visual */
+  height: 60vh;
+  overflow: visible;
   perspective: 1200px;
 }
 
@@ -51,6 +67,7 @@
   transform-style: preserve-3d;
   transform: translate(-50%, -50%);
   animation: spin 20s linear infinite;
+  z-index: 2; /* images above text */
 }
 
 .item {
@@ -62,12 +79,12 @@
 }
 
 .item img {
-  width: 440px;
-  height: 90%;
+  width: 400px;
+  height: 100%;
   object-fit: contain;
 }
 
-/* Default smooth spin */
+/* rotation animation */
 @keyframes spin {
   from {
     transform: translate(-50%, -50%) rotateY(0deg);
@@ -78,9 +95,24 @@
 }
 
 /* ===========================
-     TABLET OPTIMIZATION
+   TABLET VIEW (ONE QUERY)
    =========================== */
 @media (max-width: 1024px) {
+  .slider-section {
+    background: transparent !important;
+    margin-top: 40px;
+   margin-bottom: -270px;
+  }
+
+  .carousel-center-text {
+    display: block;
+  }
+
+  .mobile-title {
+    font-size: 130px;
+    -webkit-text-stroke: 2px white;
+  }
+
   .banner {
     height: 52vh;
   }
@@ -92,33 +124,51 @@
 
   .item {
     transform: rotateY(calc(360deg / var(--quantity) * (var(--position) - 1)))
-      translateZ(370px);
+      translateZ(350px);
   }
 
   .item img {
-    width: 340px;
+    width: 250px;
   }
 }
 
 /* ===========================
-     MOBILE OPTIMIZATION
+   MOBILE VIEW (ONE QUERY)
    =========================== */
 @media (max-width: 640px) {
+  .mobile-title {
+    font-size: 58px;
+    -webkit-text-stroke: 1.5px white;
+  }
+
+  .mobile-subtext {
+    font-size: 16px;
+  }
+  .img-four {
+  height: 150px !important;
+  margin-top: 0px;
+  
+}
   .banner {
     height: 45vh;
   }
 
   .slider {
-    width: 170px;
-    height: 170px;
+    width: 150px;
+    height: 150px;
   }
 
   .item {
+    margin-top: -30px;
     transform: rotateY(calc(360deg / var(--quantity) * (var(--position) - 1)))
-      translateZ(180px);
+      translateZ(190px);
   }
 
   .item img {
-    width: 240px;
+    width: 150px; /* reduced mobile size */
+    height: 150px;
+  }
+  .slider-section{
+     margin-bottom: -100px;
   }
 }

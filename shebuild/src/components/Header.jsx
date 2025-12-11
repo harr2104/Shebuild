@@ -8,7 +8,7 @@ export default function Header() {
   const [showHeader, setShowHeader] = useState(true);
   const [lastScroll, setLastScroll] = useState(0);
 
-  const HERO_HIDE_THRESHOLD = 350;
+  const HERO_HIDE_THRESHOLD = 50;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,11 +24,8 @@ export default function Header() {
       if (currentScroll < HERO_HIDE_THRESHOLD) {
         setShowHeader(true);
       } else {
-        if (currentScroll > lastScroll) {
-          setShowHeader(false); // scrolling down
-        } else {
-          setShowHeader(true); // scrolling up
-        }
+        if (currentScroll > lastScroll) setShowHeader(false);
+        else setShowHeader(true);
       }
 
       setLastScroll(currentScroll);
@@ -51,22 +48,48 @@ export default function Header() {
     <header
       className={`
         fixed top-0 left-0 right-0 z-[9999]
-        pt-4 px-4 md:px-8 lg:px-16
         transition-all duration-300
+
         ${showHeader ? "translate-y-0" : "-translate-y-full"}
-        ${scrolled ? "bg-gray-950/90 backdrop-blur-md border-b border-cyan-500/20 py-3" : "bg-gray-950/70 backdrop-blur-sm py-4"}
+
+        ${
+          scrolled
+            ? "bg-gray-950/90 backdrop-blur-md border-b border-cyan-500/20 py-2 md:py-3"
+            : "bg-gray-950/70 backdrop-blur-sm py-3 md:py-4"
+        }
+
+        px-4 md:px-6 lg:px-16
       `}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between md:justify-start gap-4 md:gap-8">
+      <div
+        className="
+          max-w-7xl mx-auto 
+          flex items-center 
+          justify-between 
+          md:justify-start 
+          gap-3 md:gap-5 lg:gap-8
+        "
+      >
 
         {/* LOGO */}
         <div className="flex items-center gap-2">
-          <img src={logo} alt="SheBuilds logo" className="w-15 h-12 object-contain" />
-          <span className="text-cyan-400 font-mono text-sm tracking-widest">SHEBUILDS</span>
+          <img
+            src={logo}
+            alt="SheBuilds logo"
+            className="
+              w-12 h-10 
+              md:w-14 md:h-12 
+              lg:w-16 lg:h-14 
+              object-contain
+            "
+          />
+          <span className="text-cyan-400 font-mono text-xs md:text-sm tracking-widest">
+            SHEBUILDS
+          </span>
         </div>
 
-        {/* DESKTOP NAV */}
-        <div className="hidden md:flex items-center gap-6">
+        {/* TABLET + DESKTOP NAV (hidden on mobile) */}
+        <div className="hidden md:flex items-center gap-4 lg:gap-6">
           {navItems.map((item) => (
             <a
               key={item.label}
@@ -76,7 +99,9 @@ export default function Header() {
                 document.querySelector(item.path)?.scrollIntoView({ behavior: "smooth" });
               }}
               className="
-                text-gray-400 text-sm font-custom hover:text-cyan-400 
+                text-gray-400 
+                text-xs md:text-sm lg:text-base 
+                font-custom hover:text-cyan-400 
                 transition flex items-center gap-1 group relative
               "
             >
@@ -84,18 +109,20 @@ export default function Header() {
               {item.label}
 
               <div
-                className="absolute -bottom-1 left-0 w-0 h-[1px] bg-cyan-400 
-                group-hover:w-full transition-all duration-300"
+                className="
+                  absolute -bottom-1 left-0 w-0 h-[1px] bg-cyan-400 
+                  group-hover:w-full transition-all duration-300
+                "
               ></div>
             </a>
           ))}
         </div>
 
-        {/* DESKTOP REGISTER BUTTON */}
-        <div className="hidden md:block ml-auto">
+        {/* TABLET + DESKTOP REGISTER BUTTON */}
+        <div className="hidden md:block ml-auto md:scale-90 lg:scale-100">
           <button
             className="shebuilds-btn"
-            onClick={() => window.open("https://www.google.com", "_blank")}
+            onClick={() => window.open('https://www.google.com', '_blank')}
           >
             <strong>REGISTER NOW</strong>
             <div className="sb-stars-container"><div className="sb-stars"></div></div>
@@ -117,8 +144,13 @@ export default function Header() {
 
       {/* MOBILE MENU */}
       {open && (
-        <div className="md:hidden mt-4 bg-gray-900/95 backdrop-blur-lg rounded-lg border border-gray-800 shadow-xl overflow-hidden">
-
+        <div
+          className="
+            md:hidden mt-4 bg-gray-900/95 backdrop-blur-lg 
+            rounded-lg border border-gray-800 
+            shadow-xl overflow-hidden
+          "
+        >
           <div className="p-3 space-y-1">
             {navItems.map((item) => (
               <a
@@ -127,7 +159,7 @@ export default function Header() {
                 onClick={(e) => {
                   e.preventDefault();
                   setOpen(false);
-                  document.querySelector(item.path)?.scrollIntoView({ behavior: "smooth" });
+                  document.querySelector(item.path)?.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className="
                   w-full px-4 py-3 flex items-center justify-between
@@ -156,7 +188,6 @@ export default function Header() {
                 REGISTER FOR EVENT
               </button>
             </div>
-
           </div>
         </div>
       )}

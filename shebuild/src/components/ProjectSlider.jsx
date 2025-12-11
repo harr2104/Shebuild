@@ -22,7 +22,8 @@ export default function ProjectsSlider() {
   return (
     <>
       <div className="slider-section">
-        {/* Heading */}
+
+        {/* Heading (unchanged for all views) */}
         <motion.div
           ref={ref}
           initial="hidden"
@@ -45,18 +46,34 @@ export default function ProjectsSlider() {
           </h2>
         </motion.div>
 
-        {/* UNIFIED 3D CAROUSEL FOR ALL DEVICES */}
+        {/* 3D CAROUSEL WITH CENTERED TEXT */}
         <div className="carousel-wrapper">
           <div className="banner">
+
+            {/* Center text for tablet & mobile */}
+            <div className="carousel-center-text">
+              <div className="mobile-title">SHEBUILDS</div>
+              <div className="mobile-subtext">
+                For <br /> Namma Singappengal
+              </div>
+            </div>
+
+            {/* Rotating images */}
             <div className="slider" style={{ "--quantity": images.length }}>
               {images.map((img, i) => (
                 <div key={i} className="item" style={{ "--position": i + 1 }}>
-                  <img src={img} alt={`slide-${i}`} />
+                  <img
+                          src={img}
+                          alt={`slide-${i}`}
+                          className={i === 4 ? "img-four" : ""}
+                        />
                 </div>
               ))}
             </div>
+
           </div>
         </div>
+
       </div>
     </>
   );
