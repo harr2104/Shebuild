@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import "./Projectslider.css";
 
 import img1 from "../assets/ProjectSlider/img1.png";
@@ -19,10 +20,35 @@ export default function ProjectsSlider() {
 
   const images = [img1, img2, img3, img4, img5];
 
+  const [index, setIndex] = useState(0);
+  const [animClass, setAnimClass] = useState("");
+
+  const nextSlide = () => {
+    setAnimClass("page-exit");
+    setTimeout(() => {
+      setIndex((i) => (i + 1) % images.length);
+      setAnimClass("page-enter");
+    }, 120);
+    setTimeout(() => setAnimClass(""), 600);
+  };
+
+  const prevSlide = () => {
+    setAnimClass("page-exit");
+    setTimeout(() => {
+      setIndex((i) => (i - 1 + images.length) % images.length);
+      setAnimClass("page-enter");
+    }, 120);
+    setTimeout(() => setAnimClass(""), 600);
+  };
+
+  useEffect(() => {
+    const auto = setInterval(nextSlide, 4000);
+    return () => clearInterval(auto);
+  }, []);
+
   return (
     <>
       <div className="slider-section">
-        {/* Heading */}
         <motion.div
           ref={ref}
           initial="hidden"
@@ -45,16 +71,37 @@ export default function ProjectsSlider() {
           </h2>
         </motion.div>
 
-        {/* UNIFIED 3D CAROUSEL FOR ALL DEVICES */}
-        <div className="carousel-wrapper">
+        {/* DESKTOP CAROUSEL */}
+        <div className="desktop-carousel">
           <div className="banner">
             <div className="slider" style={{ "--quantity": images.length }}>
               {images.map((img, i) => (
                 <div key={i} className="item" style={{ "--position": i + 1 }}>
-                  <img src={img} alt={`slide-${i}`} />
+                  <img
+                    src={img}
+                    alt={`slide-${i}`}
+                    className={i === 4 ? "img-small" : ""}
+                  />
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* MOBILE CAROUSEL */}
+        <div className="mobile-slider">
+          <div className="mobile-slider-container">
+            <FiChevronLeft className="arrow-btn arrow-left" onClick={prevSlide} />
+
+            <div className="mobile-img-wrapper">
+              <img
+                src={images[index]}
+                className={`mobile-img ${animClass}`}
+                alt="mobile-slide"
+              />
+            </div>
+
+            <FiChevronRight className="arrow-btn arrow-right" onClick={nextSlide} />
           </div>
         </div>
       </div>
