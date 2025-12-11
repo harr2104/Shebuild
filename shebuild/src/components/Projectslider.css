@@ -37,7 +37,7 @@
 .banner {
   position: relative;
   width: 100%;
-  height: 65vh;
+  height: 70vh;
   overflow: visible; /* fixes hollow gap visual */
   perspective: 1200px;
 }

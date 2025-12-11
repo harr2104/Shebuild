@@ -16,7 +16,7 @@ export default function App() {
       <div className="min-h-screen relative overflow-hidden">
         <BackgroundEffects />
         <div className="relative z-10 h-full flex flex-col">
-        <BackgroundEffects />
+      
           <Header />
           
           <MainContent />
@@ -51,12 +51,12 @@ export default function App() {
       </div>
       
       {/* Agenda Section */}
-      {/* <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden">
         <BackgroundEffects />
         <div className="relative z-10">
-          <Agenda />
+        
         </div>
-      </div> */}
+      </div>
 
       <div className="relative overflow-hidden">
         <BackgroundEffects />
