@@ -1,6 +1,6 @@
 
 .slider-section {
-  background-image: url('/public/shebuilds.png');
+  background-image: url('/shebuilds.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -9,14 +9,14 @@
 /* Tablet View */
 @media (max-width: 1024px) and (min-width: 601px) {
   .slider-section {
-    background-image: url('/public/shebuilds_tablet.png') !important;
+    background-image: url('/shebuilds_tablet.png') !important;
   }
 }
 
 /* Mobile View */
 @media (max-width: 600px) {
   .slider-section {
-    background-image: url('/public/shebuilds_mb.png') !important;
+    background-image: url('/shebuilds_mb.png') !important;
   }
 }
 
