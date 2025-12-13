@@ -6,15 +6,34 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const contactInfo = [
-    { icon: <FiMail />, text: "keerthana.shebuilds@gmail.com", href: "mailto:keerthana.shebuilds@gmail.com" },
-    { icon: <FiPhone />, text: "+91 94450 87093", href: "tel:+919445087093" },
-    { icon: <FiMapPin />, text: "Chennai, India", href: "https://www.google.com/maps/search/Chennai%2C+Chennai%2C+India/?hl=en" },
+    {
+      icon: <FiMail />,
+      text: "keerthana.shebuilds@gmail.com",
+      href: "https://mail.google.com/mail/?view=cm&fs=1&to=keerthana.shebuilds@gmail.com",
+    },
+    {
+      icon: <FiPhone />,
+      text: "+91 94450 87093",
+      href: "tel:+919445087093",
+    },
+    {
+      icon: <FiMapPin />,
+      text: "Chennai, India",
+      href: "https://www.google.com/maps/search/Chennai%2C+Chennai%2C+India/?hl=en",
+    },
   ];
 
-  // ✅ Twitter + YouTube removed
   const socialLinks = [
-    { icon: <FiInstagram />, label: "Instagram", href: "https://www.instagram.com/shebuildseco?igsh=dTVlaTI5bnI4cDQ4" },
-    { icon: <FiLinkedin />, label: "LinkedIn", href: "https://www.linkedin.com/company/shebuildshack" }
+    {
+      icon: <FiInstagram />,
+      label: "Instagram",
+      href: "https://www.instagram.com/shebuilds_chennai?igsh=MXVndDBsdGwyYjZwNA==",
+    },
+    {
+      icon: <FiLinkedin />,
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/company/shebuildshack",
+    },
   ];
 
   const quickLinks = [
@@ -32,7 +51,7 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 py-12">
 
-        {/* --- TOP GRID --- */}
+        {/* TOP GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-12 mb-12">
 
           {/* CONTACT BLOCK */}
@@ -43,6 +62,8 @@ export default function Footer() {
                 <motion.a
                   key={index}
                   href={contact.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -69,6 +90,8 @@ export default function Footer() {
                 <motion.a
                   key={index}
                   href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
@@ -113,10 +136,9 @@ export default function Footer() {
 
         <div className="h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent mb-8"></div>
 
-        {/* --- BOTTOM SECTION --- */}
+        {/* BOTTOM */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
 
-          {/* LOGO + NAME */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -124,15 +146,10 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
             className="flex items-center gap-2"
           >
-            <img 
-              src={logo}
-              alt="SheBuilds logo"
-              className="w-8 h-8 object-contain"
-            />
+            <img src={logo} alt="SheBuilds logo" className="w-8 h-8 object-contain" />
             <span className="text-white font-bold text-lg">SheBuilds</span>
           </motion.div>
 
-          {/* COPYRIGHT */}
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -143,7 +160,6 @@ export default function Footer() {
             © {currentYear} SheBuilds. All rights reserved.
           </motion.p>
 
-          {/* TAGLINE */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}

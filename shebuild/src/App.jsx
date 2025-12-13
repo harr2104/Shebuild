@@ -33,9 +33,9 @@ export default function App() {
       </div>
 
       {/* Project Slider Section */}
-      <div className="min-h-screen relative overflow-hidden slider-section">
+      <div className="relative overflow-hidden">
         <BackgroundEffects />
-        <div className="relative z-10 h-full flex flex-col">
+        <div className="relative z-10 ">
           <ProjectsSlider />
         </div>
       </div>

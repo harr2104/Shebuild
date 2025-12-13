@@ -23,7 +23,7 @@ export default function ProjectsSlider() {
     <>
       <div className="slider-section">
 
-        {/* Heading (unchanged for all views) */}
+        {/* HEADER */}
         <motion.div
           ref={ref}
           initial="hidden"
@@ -31,9 +31,11 @@ export default function ProjectsSlider() {
           variants={fadeUp}
           className="text-center mb-10 sm:mb-12 px-4"
         >
+          {/* Tag */}
           <div
             id="projects"
-            className="inline-flex items-center gap-2 px-4 py-2 projects-slider-section bg-gray-900/50 backdrop-blur-sm rounded-lg border border-blue-500/30 mb-4"
+            className="inline-flex items-center gap-2 px-4 py-2 projects-slider-section 
+            bg-gray-900/50 backdrop-blur-sm rounded-lg border border-blue-500/30 mb-4"
           >
             <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
             <span className="text-cyan-400 font-mono text-xs sm:text-sm tracking-wider">
@@ -41,32 +43,56 @@ export default function ProjectsSlider() {
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-custom mb-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400">
+          {/* Title */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-custom mb-4 
+            bg-clip-text text-transparent bg-gradient-to-r 
+            from-cyan-400 via-purple-400 to-cyan-400"
+          >
             SheBuilds Success
           </h2>
+
+          {/* Animated Underline */}
+          <motion.div
+            initial={{ opacity: 0, width: 0 }}
+            animate={isInView ? { opacity: 1, width: "200px" } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mx-auto h-0.5 bg-gradient-to-r 
+            from-transparent via-cyan-500 to-transparent mb-4"
+          />
+
+          {/* Description Text */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="text-gray-400 text-base sm:text-lg max-w-xl mx-auto 
+            font-custom leading-relaxed"
+          >
+            Stories of impact, innovation, and inspiration from our amazing community
+          </motion.p>
         </motion.div>
 
-        {/* 3D CAROUSEL WITH CENTERED TEXT */}
+        {/* 3D CAROUSEL WITH CENTER TEXT */}
         <div className="carousel-wrapper">
           <div className="banner">
 
-            {/* Center text for tablet & mobile */}
+            {/* Center Text */}
             <div className="carousel-center-text">
-              <div className="mobile-title">SHEBUILDS</div>
-              <div className="mobile-subtext">
+              <div className="carousel-title">SHEBUILDS</div>
+              <div className="carousel-subtext">
                 For <br /> Namma Singappengal
               </div>
             </div>
 
-            {/* Rotating images */}
+            {/* Rotating Images */}
             <div className="slider" style={{ "--quantity": images.length }}>
               {images.map((img, i) => (
                 <div key={i} className="item" style={{ "--position": i + 1 }}>
                   <img
-                          src={img}
-                          alt={`slide-${i}`}
-                          className={i === 4 ? "img-four" : ""}
-                        />
+                    src={img}
+                    alt={`slide-${i}`}
+                    className={i === 4 ? "img-four" : ""}
+                  />
                 </div>
               ))}
             </div>

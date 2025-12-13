@@ -172,12 +172,7 @@ body {
     opacity: 1;
   }
 }
-.slider-section {
-  background-image: url('/shebuilds.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+
 
 @media (max-width: 640px) {
   .sponsor-title-block {
@@ -330,10 +325,4 @@ body {
   70% { transform: scale(1); }
   100% { transform: scale(0.75); }
 }
-.su-sto{
-  margin-top: 40px;
-}
 
-#whyattend{
-  margin-top: -40px;
-}

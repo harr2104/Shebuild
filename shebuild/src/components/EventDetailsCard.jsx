@@ -204,7 +204,7 @@ export default function EventDetailsCard() {
               className="text-white font-medium text-sm md:text-base"
               whileHover={{ x: 5 }}
             >
-              15.11.2024 | 10:00 AM
+              31.01.2025 | 9:00 AM - 2:30 PM
             </motion.p>
           </div>
         </motion.div>

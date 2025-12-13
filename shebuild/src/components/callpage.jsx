@@ -4,10 +4,8 @@ import { motion } from "framer-motion";
 
 export default function CallPage() {
   const [isInView, setIsInView] = useState(false);
-  const [isOpportunitiesInView, setIsOpportunitiesInView] = useState(false);
 
   const ref = useRef(null);
-  const opportunitiesRef = useRef(null);
 
   useEffect(() => {
     const checkScroll = () => {
@@ -15,12 +13,6 @@ export default function CallPage() {
         const rect = ref.current.getBoundingClientRect();
         if (rect.top < window.innerHeight * 0.85 && rect.bottom > 0) {
           setIsInView(true);
-        }
-      }
-      if (opportunitiesRef.current) {
-        const oppRect = opportunitiesRef.current.getBoundingClientRect();
-        if (oppRect.top < window.innerHeight * 0.85 && oppRect.bottom > 0) {
-          setIsOpportunitiesInView(true);
         }
       }
     };
@@ -55,7 +47,7 @@ export default function CallPage() {
       id="call"
       className="
         relative
-        pt-12 sm:pt-16 md:pt-20   /* ⭐ FIXED: Reduced spacing */
+        pt-12 sm:pt-16 md:pt-20
         pb-16 sm:pb-20 md:pb-24
         px-4 sm:px-6 md:px-8 lg:px-16
         overflow-hidden
@@ -103,9 +95,8 @@ export default function CallPage() {
         <motion.div
           variants={fadeInUp}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="relative mb-12 mt-4 sm:mt-8"   /* ⭐ FIXED */
+          className="relative mb-12 mt-4 sm:mt-8"
         >
-          {/* Glow Background */}
           <div className="absolute inset-0 sm:-inset-4 bg-gradient-to-r 
             from-cyan-500/20 via-blue-500/20 to-cyan-500/20 
             rounded-3xl blur-xl"></div>
@@ -114,7 +105,6 @@ export default function CallPage() {
             from-gray-900/60 to-gray-800/40 backdrop-blur-md 
             rounded-2xl border-2 border-cyan-500/30 p-6 sm:p-8 overflow-hidden"
           >
-            {/* FEATURED BADGE — FIXED POSITION FOR MOBILE */}
             <motion.div variants={scaleIn} 
               className="absolute top-2 right-2 sm:top-6 sm:right-6">
               <div className="flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-2 
@@ -129,8 +119,8 @@ export default function CallPage() {
 
             <div className="flex flex-col lg:flex-row items-start gap-6 sm:gap-8">
               
-              {/* LEFT SECTION */}
-              <div className="lg:w-2/3 sponsor-title-block">
+              {/* LEFT */}
+              <div className="lg:w-2/3">
                 <motion.div variants={slideInLeft} className="flex items-center gap-4 mb-4 sm:mb-6">
                   <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl 
                   bg-gradient-to-r from-cyan-500/20 to-blue-500/20 
@@ -172,7 +162,7 @@ export default function CallPage() {
                 </div>
               </div>
 
-              {/* RIGHT SECTION */}
+              {/* RIGHT */}
               <motion.div variants={slideInRight} className="lg:w-1/3">
                 <div className="bg-gray-900/50 rounded-xl p-6 border border-gray-800/50">
                   <h4 className="text-lg sm:text-xl font-bold text-white mb-4 font-custom">
@@ -181,9 +171,9 @@ export default function CallPage() {
 
                   <div className="space-y-4">
                     {[
-                      { name: "PLATINUM", color: "from-cyan-500 to-blue-500" },
-                      { name: "GOLD", color: "from-purple-500 to-pink-500" },
-                      { name: "SILVER", color: "from-blue-500 to-cyan-500" },
+                      { name: "Chennai Regional Title Sponsor", color: "from-cyan-500 to-blue-500" },
+                      { name: "Regionally Powered By sponsor", color: "from-purple-500 to-pink-500" },
+                      { name: "Regionally Co-Powered By sponsor", color: "from-blue-500 to-cyan-500" },
                     ].map((tier, idx) => (
                       <div
                         key={idx}
@@ -199,121 +189,92 @@ export default function CallPage() {
                     ))}
                   </div>
 
-                  <button
-                    onClick={() => {
-                      const link = document.createElement("a");
-                      link.href = "/sponsorship_deck.pdf";
-                      link.download = "SheBuilds_Sponsorship_Deck.pdf";
-                      link.click();
-                    }}
-                    className="mt-6 w-full py-3 bg-gradient-to-r 
-                    from-cyan-500 to-blue-500 text-white rounded-lg text-sm sm:text-base"
-                  >
-                    REQUEST SPONSORSHIP DECK
-                  </button>
+<a
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=keerthana.shebuilds@gmail.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mt-6 block text-center w-full py-3 bg-gradient-to-r 
+  from-cyan-500 to-blue-500 text-white rounded-lg text-sm sm:text-base"
+>
+  FUEL WOMEN IN TECH
+</a>
                 </div>
               </motion.div>
             </div>
           </div>
         </motion.div>
 
-        {/* OTHER OPPORTUNITIES */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {[
-            {
-              id: "speakers",
-              icon: <FiMic />,
-              title: "SHARE AS SPEAKER",
-              description: "Inspire the next generation with your journey.",
-              cta: "Apply to Speak",
-              benefits: [
+    {/* ===================================================== */}
+        {/* SHARE AS SPEAKER — SAME DESIGN SYSTEM AS WHY_ATTEND */}
+        {/* ===================================================== */}
+
+        <motion.div
+          variants={fadeInUp}
+          transition={{ duration: 0.6 }}
+          className="
+            relative
+            mx-auto
+            w-full max-w-md
+            lg:max-w-[680px]
+          "
+        >
+          {/* Subtle ambient glow (WhyAttend-style, not flashy) */}
+          <div className="
+            absolute inset-0
+            bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-blue-500/10
+            rounded-2xl blur-2xl
+          " />
+
+          <div className="
+            relative
+            bg-gray-900/40 backdrop-blur-md
+            rounded-2xl
+            border border-gray-800/50
+            p-6 sm:p-8
+            hover:scale-[1.02]
+            transition-transform duration-300
+          ">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-14 h-14 rounded-full 
+                bg-gradient-to-r from-cyan-500/20 to-blue-500/20
+                flex items-center justify-center border border-cyan-500/30">
+                <FiMic className="text-2xl text-cyan-400" />
+              </div>
+
+              <div>
+                <h3 className="text-xl sm:text-2xl font-bold text-cyan-500 font-custom">
+                  SHARE AS SPEAKER
+                </h3>
+                <p className="text-gray-400">
+                  Inspire the next generation with your journey.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-3 mb-6">
+              {[
                 "Impact 1000+ women",
                 "Share domain expertise",
                 "Join a national speaker network",
-              ],
-            },
-            {
-              id: "volunteers",
-              icon: <FiUsers />,
-              title: "VOLUNTEER WITH US",
-              description: "Be the backbone of our events.",
-              cta: "Join as Volunteer",
-              benefits: [
-                "Build leadership & communication skills",
-                "Work closely with mentors & speakers",
-                "Networking",
-                "Volunteer certificate",
-              ],
-            },
-          ].map((opp, idx) => (
-            <motion.div
-              key={opp.id}
-              variants={fadeInUp}
-              transition={{ duration: 0.6, delay: 1 + idx * 0.2 }}
-              className="relative group"
-            >
-              <div className="bg-gray-900/40 backdrop-blur-md rounded-2xl 
-              border border-gray-800/50 p-6 h-full">
-                
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-gray-800/50 flex items-center 
-                  justify-center border border-gray-700/50">
-                    <div className="text-xl text-gray-400">{opp.icon}</div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-bold text-white font-custom text-cyan-500">
-                      {opp.title}
-                    </h3>
-                    <p className="text-gray-400 text-sm">{opp.description}</p>
-                  </div>
+              ].map((b, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 bg-gray-500 rounded-full"></div>
+                  <span className="text-gray-400 text-sm">{b}</span>
                 </div>
-
-                <div className="space-y-3 mb-6">
-                  {opp.benefits.map((benefit, bIdx) => (
-                    <div key={bIdx} className="flex items-center gap-3">
-                      <div className="w-1.5 h-1.5 bg-gray-500 rounded-full"></div>
-                      <span className="text-gray-400 text-sm">{benefit}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <button className="w-full py-3 bg-gray-800/50 text-white 
-                rounded-lg border border-gray-700/50 text-sm sm:text-base">
-                  {opp.cta}
-                </button>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* FINAL CTA */}
-        <motion.div
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={fadeInUp}
-          transition={{ duration: 0.8, delay: 2 }}
-          className="text-center mt-16"
-        >
-          <div className="inline-flex flex-col items-center gap-4 p-6 sm:p-8 
-          bg-gray-900/30 backdrop-blur-md rounded-2xl border border-gray-800/50">
-            
-            <h3 className="text-xl sm:text-2xl font-bold text-white font-custom">
-              Ready to Make a Difference?
-            </h3>
-
-            <p className="text-gray-400 max-w-md text-sm sm:text-base font-heading">
-              Join us in building a more inclusive tech ecosystem.
-            </p>
-
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full 
-            bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/30">
-              <span className="text-cyan-300 text-xs sm:text-sm">
-                DEADLINE: NOVEMBER 30, 2024
-              </span>
+              ))}
             </div>
+
+            <button
+              className="w-full py-3 rounded-lg 
+              bg-gradient-to-r from-cyan-500 to-blue-500 
+              text-white font-semibold"
+              onClick={() => window.open('https://forms.gle/X7p3eh8WBbiTr9Nw9', '_blank')}
+            >
+              Apply to Speak
+            </button>
           </div>
         </motion.div>
+
 
       </div>
     </section>
