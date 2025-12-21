@@ -36,7 +36,7 @@ export default function Header() {
   }, [lastScroll]);
 
   const navItems = [
-    { label: "HOME", path: "#", icon: <FiHome /> },
+    { label: "HOME", path: "home", icon: <FiHome /> },
     { label: "ABOUT", path: "#about", icon: <FiInfo /> },
     { label: "WHY ATTEND", path: "#whyattend", icon: <FiUsers /> },
     { label: "JOURNEY", path: "#projects", icon: <FiCalendar /> },
@@ -88,7 +88,6 @@ export default function Header() {
           </span>
         </div>
 
-        {/* TABLET + DESKTOP NAV (hidden on mobile) */}
         <div className="hidden md:flex items-center gap-4 lg:gap-6">
           {navItems.map((item) => (
             <a
@@ -122,7 +121,7 @@ export default function Header() {
         <div className="hidden md:block ml-auto md:scale-90 lg:scale-100">
           <button
             className="shebuilds-btn"
-            onClick={() => window.open('https://www.google.com', '_blank')}
+            onClick={() => window.open('https://luma.com/vs98di4e', '_blank')}
           >
             <strong>REGISTER NOW</strong>
             <div className="sb-stars-container"><div className="sb-stars"></div></div>

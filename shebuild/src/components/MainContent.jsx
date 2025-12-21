@@ -64,6 +64,7 @@ export default function MainContent() {
         gap-8 md:gap-12 
 mt-[50px] sm:mt-[60px] md:mt-[40px] lg:mt-[50px]
       "
+      id = "home"
     >
 
       {/* IMAGE */}
@@ -145,7 +146,7 @@ mt-[50px] sm:mt-[60px] md:mt-[40px] lg:mt-[50px]
         <div className="block md:hidden mt-3 mb-2">
           <button
             className="shebuilds-btn mx-auto"
-            onClick={() => window.open("https://www.google.com", "_blank")}
+            onClick={() => window.open("https://luma.com/vs98di4e", "_blank")}
           >
             <strong>CLICK TO REGISTER</strong>
             <div className="sb-stars-container"><div className="sb-stars"></div></div>

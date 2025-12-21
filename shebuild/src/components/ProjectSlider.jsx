@@ -39,7 +39,7 @@ export default function ProjectsSlider() {
           >
             <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
             <span className="text-cyan-400 font-mono text-xs sm:text-sm tracking-wider">
-              SUCCESS_STORIES
+              JOURNEY
             </span>
           </div>
 

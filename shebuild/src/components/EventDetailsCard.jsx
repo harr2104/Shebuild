@@ -3,7 +3,7 @@ import { FiCalendar, FiGlobe, FiPlay } from "react-icons/fi";
 
 export default function EventDetailsCard() {
   const handleRegisterClick = () => {
-    window.open("https://www.google.com", "_blank");
+    window.open("https://luma.com/vs98di4e", "_blank");
   };
 
   const cardVariants = {
@@ -204,7 +204,7 @@ export default function EventDetailsCard() {
               className="text-white font-medium text-sm md:text-base"
               whileHover={{ x: 5 }}
             >
-              31.01.2025 | 9:00 AM - 2:30 PM
+              31.01.2026 | 9:00 AM - 2:30 PM
             </motion.p>
           </div>
         </motion.div>

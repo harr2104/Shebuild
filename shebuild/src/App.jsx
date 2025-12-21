@@ -5,7 +5,7 @@ import MainContent from "./components/MainContent";
 import AboutSection from "./components/About";
 import ProjectsSlider from "./components/ProjectSlider";
 import WhyAttend from "./components/WhyAttend";
-import Agenda from "./components/Agenda";
+// import Agenda from "./components/Agenda";
 import CallPage from "./components/callpage";
 import Footer from "./components/Footer";
 
@@ -51,12 +51,12 @@ export default function App() {
       </div>
       
       {/* Agenda Section */}
-      <div className="relative overflow-hidden">
+      {/* <div className="relative overflow-hidden">
         <BackgroundEffects />
         <div className="relative z-10">
         
         </div>
-      </div>
+      </div> */}
 
       <div className="relative overflow-hidden">
         <BackgroundEffects />
@@ -64,6 +64,9 @@ export default function App() {
           <CallPage />
         </div>
       </div>
+
+
+
       <div className="relative overflow-hidden">
         <BackgroundEffects />
         <div className="relative z-10">
