@@ -106,10 +106,10 @@ export default function CallPage() {
             rounded-2xl border-2 border-cyan-500/30 p-6 sm:p-8 overflow-hidden"
           >
             <motion.div variants={scaleIn} 
-              className="absolute top-2 right-2 sm:top-6 sm:right-6">
+              className="absolute top-2 right-2 sm:top-6 sm:right-6 ">
               <div className="flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-2 
               rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 
-              border border-cyan-500/30">
+              border border-cyan-500/30 ">
                 <FiTarget className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400" />
                 <span className="text-cyan-300 text-xs sm:text-sm font-custom">
                   FEATURED OPPORTUNITY
@@ -124,12 +124,12 @@ export default function CallPage() {
                 <motion.div variants={slideInLeft} className="flex items-center gap-4 mb-4 sm:mb-6">
                   <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl 
                   bg-gradient-to-r from-cyan-500/20 to-blue-500/20 
-                  flex items-center justify-center border border-cyan-500/30">
-                    <FiDollarSign className="w-6 h-6 sm:w-8 sm:h-8 text-cyan-400" />
+                  flex items-center justify-center border border-cyan-500/30 mt-4">
+                    <FiDollarSign className="w-6 h-6 sm:w-8 sm:h-8 text-cyan-400 " />
                   </div>
 
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white font-custom">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white font-custom mt-2  ">
                       SPONSORSHIP PARTNERSHIP
                     </h3>
                     <p className="text-cyan-300 text-sm font-heading">
@@ -165,7 +165,7 @@ export default function CallPage() {
               {/* RIGHT */}
               <motion.div variants={slideInRight} className="lg:w-1/3">
                 <div className="bg-gray-900/50 rounded-xl p-6 border border-gray-800/50">
-                  <h4 className="text-lg sm:text-xl font-bold text-white mb-4 font-custom">
+                  <h4 className="text-lg sm:text-xl font-bold text-white mb-4 font-custom ">
                     SPONSORSHIP TIERS
                   </h4>
 

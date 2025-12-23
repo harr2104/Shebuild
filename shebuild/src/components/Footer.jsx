@@ -113,7 +113,7 @@ export default function Footer() {
           </div>
 
           {/* 2. Quick Links - with smooth scrolling */}
-          <div className="space-y-6 ml-8">
+          <div className="space-y-6 ml-0 sm:ml-0 lg:ml-8">
             <h3 className="text-white font-bold text-lg">Quick Links</h3>
             <div className="flex flex-col space-y-2">
               <div className="grid grid-cols-2 gap-x-4">
@@ -180,7 +180,7 @@ export default function Footer() {
           <div className="space-y-6">
             <div className="flex items-center gap-2 mb-4">
               <FiUsers className="text-cyan-400" />
-              <h3 className="text-white font-bold text-lg">Tech Team</h3>
+              <h3 className="text-white font-bold text-lg">Web Development Team</h3>
             </div>
             
             <div className="space-y-4">

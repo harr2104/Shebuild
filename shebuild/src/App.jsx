@@ -8,6 +8,7 @@ import WhyAttend from "./components/WhyAttend";
 // import Agenda from "./components/Agenda";
 import CallPage from "./components/callpage";
 import Footer from "./components/Footer";
+import Sponsor from "./components/Sponsor";
 
 export default function App() {
   return (
@@ -66,6 +67,12 @@ export default function App() {
       </div>
 
 
+      <div className="relative overflow-hidden">
+        <BackgroundEffects />
+        <div className="relative z-10">
+          <Sponsor />
+        </div>
+      </div>
 
       <div className="relative overflow-hidden">
         <BackgroundEffects />
