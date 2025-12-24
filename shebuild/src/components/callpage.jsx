@@ -169,35 +169,52 @@ export default function CallPage() {
                     SPONSORSHIP TIERS
                   </h4>
 
-                  <div className="space-y-4">
-                    {[
-                      { name: "Chennai Regional Title Sponsor", color: "from-cyan-500 to-blue-500" },
-                      { name: "Regionally Powered By sponsor", color: "from-purple-500 to-pink-500" },
-                      { name: "Regionally Co-Powered By sponsor", color: "from-blue-500 to-cyan-500" },
-                    ].map((tier, idx) => (
-                      <div
-                        key={idx}
-                        className="p-4 rounded-lg bg-gradient-to-r 
-                        from-gray-800/50 to-gray-900/50 border border-gray-700/50"
-                      >
-                        <div className={`text-transparent bg-clip-text bg-gradient-to-r ${tier.color} 
-                        text-lg mb-2`}>
-                          {tier.name}
-                        </div>
-                        <div className="text-gray-400 text-sm">Comprehensive benefits package</div>
-                      </div>
-                    ))}
-                  </div>
+                 <div className="space-y-4">
+  {[
+    {
+      name: "Chennai Regional Title Sponsor",
+      color: "from-cyan-500 to-blue-500",
+      desc: "Exclusive regional title partnership with maximum brand impact.",
+    },
+    {
+      name: "Regionally Powered By sponsor",
+      color: "from-purple-500 to-pink-500",
+      desc: "Regional branding partnership with strong on-ground and digital presence.",
+    },
+    {
+      name: "Regionally Co-Powered By sponsor",
+      color: "from-indigo-500 to-violet-500",
+      desc: "Accessible regional partnership with consistent brand exposure.",
+    },
+  ].map((tier, idx) => (
+    <div
+      key={idx}
+      className="p-4 rounded-lg bg-gradient-to-r 
+      from-gray-800/50 to-gray-900/50 border border-gray-700/50"
+    >
+      <div
+        className={`text-transparent bg-clip-text bg-gradient-to-r ${tier.color} 
+        text-lg mb-2`}
+      >
+        {tier.name}
+      </div>
+      <div className="text-gray-400 text-sm">{tier.desc}</div>
+    </div>
+  ))}
+</div>
 
-<a
-  href="https://mail.google.com/mail/?view=cm&fs=1&to=keerthana.shebuilds@gmail.com"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="mt-6 block text-center w-full py-3 bg-gradient-to-r 
-  from-cyan-500 to-blue-500 text-white rounded-lg text-sm sm:text-base"
->
-  FUEL WOMEN IN TECH
-</a>
+
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=keerthana.shebuilds@gmail.com&su=Sponsorship%20Inquiry%20-%20SheBuilds&body=Hello%20SheBuilds%20Team,%0A%0AI%20am%20interested%20in%20exploring%20a%20sponsorship%20or%20partnership%20opportunity%20with%20SheBuilds.%0A%0APlease%20share%20more%20details%20about%20the%20available%20options.%0A%0ABest%20regards,%0A"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 block text-center w-full py-3 bg-gradient-to-r 
+                  from-cyan-500 to-blue-500 text-white rounded-lg text-sm sm:text-base"
+                >
+                  FUEL WOMEN IN TECH
+                </a>
+
+
                 </div>
               </motion.div>
             </div>
@@ -263,6 +280,23 @@ export default function CallPage() {
                 </div>
               ))}
             </div>
+            
+<div className="mb-4 text-sm sm:text-sm leading-relaxed text-gray-300 text-center">
+
+  <span
+    className="
+      font-semibold
+      bg-clip-text text-transparent
+      bg-gradient-to-r from-blue-500 to-cyan-500
+    "
+  >
+    Note:
+  </span>{" "}
+  The speaker slots for Code and Connect 3.0 are filled.
+  <br />
+  We are only looking for speakers for our upcoming events in Chennai.
+</div>
+
 
             <button
               className="w-full py-3 rounded-lg 
