@@ -41,6 +41,13 @@ export default function App() {
         </div>
       </div>
       
+            <div className="relative overflow-hidden">
+        <BackgroundEffects />
+        <div className="relative z-10">
+          <Sponsor />
+        </div>
+      </div>
+
   
       
       {/* Why Attend Section */}
@@ -67,12 +74,6 @@ export default function App() {
       </div>
 
 
-      <div className="relative overflow-hidden">
-        <BackgroundEffects />
-        <div className="relative z-10">
-          <Sponsor />
-        </div>
-      </div>
 
       <div className="relative overflow-hidden">
         <BackgroundEffects />
