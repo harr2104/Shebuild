@@ -5,6 +5,7 @@ import rec from "../assets/REC.png";
 // Community partner logos
 import chennaiReact from "../assets/chennai-react.png";
 import nammaFlutter from "../assets/Namma flutter.png";
+import AIgeeks from "../assets/AIgeeks.png";
 
 // Partner logos
 import partner1 from "../assets/Interview buddy.png";
@@ -13,6 +14,9 @@ import partner3 from "../assets/Notion.png";
 import partner4 from "../assets/xyz-logo-white.png";
 
 export default function Sponsors() {
+  const communityPartners = [chennaiReact, nammaFlutter, AIgeeks];
+  const partners = [partner1, partner2, partner3, partner4];
+
   return (
     <section
       id="sponsors"
@@ -37,7 +41,6 @@ export default function Sponsors() {
 
       {/* ================= MAIN SPONSORS ================= */}
       <div className="flex flex-col md:flex-row items-center justify-center gap-16 md:gap-28 mb-24">
-
         {/* OO STUDIO */}
         <div className="relative flex flex-col items-center">
           <span className="mb-4 text-base sm:text-lg font-semibold tracking-wide text-gray-100 uppercase">
@@ -45,9 +48,9 @@ export default function Sponsors() {
           </span>
 
           <div className="relative">
-            <div className="absolute inset-0 -z-10 rounded-full blur-3xl
-              bg-[radial-gradient(circle,rgba(255,255,255,0.55)_0%,rgba(225,225,225,0.35)_40%,rgba(200,200,200,0.15)_65%,transparent_80%)]
-              scale-140"
+            <div
+              className="absolute inset-0 -z-10 rounded-full blur-3xl glow-pulse
+              bg-[radial-gradient(circle,rgba(255,240,200,0.45)_0%,rgba(235,215,180,0.32)_40%,rgba(200,180,140,0.18)_65%,transparent_80%)]"
             />
             <div className="flex items-center justify-center h-28">
               <img
@@ -58,12 +61,9 @@ export default function Sponsors() {
             </div>
           </div>
 
-          <div className="mt-4 text-center">
-            <span className="text-base sm:text-lg font-mono tracking-widest text-gray-100">
-              OO STUDIO
-            </span>
-            <div className="mx-auto mt-1 h-px w-10 bg-gray-400/70" />
-          </div>
+          <span className=" text-sm tracking-widest text-gray-300">
+            OO STUDIO
+          </span>
         </div>
 
         {/* REC */}
@@ -73,9 +73,9 @@ export default function Sponsors() {
           </span>
 
           <div className="relative">
-            <div className="absolute inset-0 -z-10 rounded-full blur-3xl
-              bg-[radial-gradient(circle,rgba(220,200,255,0.55)_0%,rgba(190,160,255,0.35)_40%,rgba(160,130,255,0.15)_65%,transparent_80%)]
-              scale-140"
+            <div
+              className="absolute inset-0 -z-10 rounded-full blur-3xl glow-pulse
+              bg-[radial-gradient(circle,rgba(255,240,200,0.45)_0%,rgba(235,215,180,0.32)_40%,rgba(200,180,140,0.18)_65%,transparent_80%)]"
             />
             <div className="flex items-center justify-center h-28">
               <img
@@ -85,52 +85,33 @@ export default function Sponsors() {
               />
             </div>
           </div>
-
-          <div className="mt-4 text-center">
-            <span className="text-base sm:text-lg font-mono tracking-widest text-gray-100">
-              RAJALAKSHMI ENGINEERING COLLEGE
-            </span>
-            <div className="mx-auto mt-1 h-px w-16 bg-gray-400/70" />
-          </div>
         </div>
       </div>
 
       {/* ================= COMMUNITY PARTNERS ================= */}
       <div className="mb-24 text-center">
-        <h3
-          className="
-            text-xl sm:text-2xl font-bold tracking-widest
-            bg-clip-text text-transparent
-            bg-[linear-gradient(90deg,#f5f5f5,#d4d4d8,#f5f5f5)]
-            inline-block
-          "
-        >
+        <h3 className="text-xl sm:text-2xl font-bold tracking-widest text-gray-100">
           COMMUNITY PARTNERS
         </h3>
 
-        <div className="mx-auto mt-3 h-0.5 w-28 bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent" />
+        <div className="mx-auto mt-3 h-0.5 w-28 bg-gray-500/60" />
 
-        <div className="mt-14 grid grid-cols-2 gap-16 max-w-2xl mx-auto">
-          {[
-            { name: "CHENNAI REACT", logo: chennaiReact },
-            { name: "NAMMA FLUTTER", logo: nammaFlutter },
-          ].map((item, i) => (
-            <div key={i} className="relative flex flex-col items-center">
-              <div className="absolute inset-0 -z-10 rounded-full blur-3xl
-                bg-[radial-gradient(circle,rgba(255,255,255,0.42)_0%,rgba(220,220,220,0.28)_40%,transparent_72%)]
-                scale-130"
+        <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 gap-16 max-w-3xl mx-auto">
+          {communityPartners.map((logo, i) => (
+            <div
+              key={i}
+              className={`relative flex items-center justify-center
+              ${i === communityPartners.length - 1 ? "col-span-2 sm:col-span-1" : ""}`}
+            >
+              <div
+                className="absolute inset-0 -z-10 rounded-full blur-3xl glow-pulse
+                bg-[radial-gradient(circle,rgba(235,240,245,0.5)_0%,rgba(210,215,220,0.35)_40%,rgba(185,190,195,0.2)_65%,transparent_80%)]"
               />
               <img
-                src={item.logo}
-                alt={item.name}
-                className="h-24 sm:h-28 md:h-32 object-contain"
+                src={logo}
+                alt="Community Partner"
+                className="h-32 sm:h-36 md:h-40 object-contain"
               />
-              <div className="mt-4 text-center">
-                <span className="text-base sm:text-lg font-mono tracking-widest text-gray-200">
-                  {item.name}
-                </span>
-                <div className="mx-auto mt-1 h-px w-10 bg-gray-400/70" />
-              </div>
             </div>
           ))}
         </div>
@@ -138,46 +119,30 @@ export default function Sponsors() {
 
       {/* ================= PARTNERS ================= */}
       <div className="text-center">
-        <h3
-          className="text-xl sm:text-2xl font-bold tracking-widest inline-block"
-          style={{
-            background: "linear-gradient(90deg, #e5e7eb, #d1d5db, #e5e7eb)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
-        >
+        <h3 className="text-xl sm:text-2xl font-bold tracking-widest text-gray-100">
           PARTNERS
         </h3>
 
-        <div className="mx-auto mt-3 h-0.5 w-24 bg-gradient-to-r from-transparent via-violet-400/70 to-transparent" />
+        <div className="mx-auto mt-3 h-0.5 w-24 bg-gray-500/60" />
 
         <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-16 max-w-5xl mx-auto">
-          {[
-            { name: "Interview Buddy", logo: partner1, boost: true },
-            { name: "Navan AI", logo: partner2 },
-            { name: "Notion", logo: partner3, boost: true },
-            { name: "XYZ", logo: partner4 },
-          ].map((item, i) => (
-            <div key={i} className="relative flex flex-col items-center">
-              <div
-                className={`absolute inset-0 -z-10 rounded-full blur-3xl
-                ${
-                  item.boost
-                    ? "bg-[radial-gradient(circle,rgba(255,255,255,0.55)_0%,rgba(225,225,225,0.35)_40%,rgba(200,200,200,0.18)_65%,transparent_80%)] scale-135"
-                    : "bg-[radial-gradient(circle,rgba(255,255,255,0.42)_0%,rgba(220,220,220,0.25)_40%,transparent_70%)] scale-125"
+          {partners.map((logo, i) => (
+            <div key={i} className="relative flex items-center justify-center">
+             <div
+  className="absolute inset-0 -z-10 rounded-full blur-[44px] glow-pulse
+  bg-[radial-gradient(circle,rgba(235,220,205,0.32)_0%,rgba(215,200,185,0.22)_45%,rgba(195,180,165,0.12)_70%,transparent_85%)]
+  scale-135"
+/>
+
+              <img
+                src={logo}
+                alt="Partner"
+                className={`object-contain ${
+                  i === 0 || i === 2
+                    ? "h-36 sm:h-40 md:h-44"
+                    : "h-22 sm:h-26 md:h-28"
                 }`}
               />
-              <img
-                src={item.logo}
-                alt={item.name}
-                className="h-20 sm:h-24 md:h-28 object-contain"
-              />
-              <div className="mt-4 text-center">
-                <span className="text-base sm:text-lg font-mono tracking-widest text-gray-200">
-                  {item.name}
-                </span>
-                <div className="mx-auto mt-1 h-px w-8 bg-gray-400/70" />
-              </div>
             </div>
           ))}
         </div>
