@@ -326,19 +326,22 @@ body {
   100% { transform: scale(0.75); }
 }
 
+/* MOBILE FIRST */
 .partner-img-large {
-  height: 20%;
+  height: 19rem;      /* visible & strong on mobile */
 }
 
 .partner-img-small {
   height: 5rem;
 }
 
+/* SM */
 @media (min-width: 640px) {
   .partner-img-large { height: 13rem; }
   .partner-img-small { height: 8rem; }
 }
 
+/* MD */
 @media (min-width: 768px) {
   .partner-img-large { height: 15rem; }
   .partner-img-small { height: 9rem; }

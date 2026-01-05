@@ -16,8 +16,8 @@ import partner4 from "../assets/xyz-logo-white.png";
 export default function Sponsors() {
   const communityPartners = [
     { logo: chennaiReact, href: "https://www.linkedin.com/company/chennaireact/?originalSubdomain=in" },
-    { logo: nammaFlutter, href: "https://www.linkedin.com/company/nammaflutter/" },
     { logo: AIgeeks, href: " https://www.linkedin.com/company/ai-geeks-chennai/" },
+    { logo: nammaFlutter, href: "https://www.linkedin.com/company/nammaflutter/" },
   ];
 
   const partners = [
@@ -99,7 +99,7 @@ export default function Sponsors() {
         <div className="mx-auto mt-3 h-0.5 w-28 bg-gray-500/60" />
 
         {/* ⬇ Increased spacing + slightly denser glow */}
-        <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 gap-20 max-w-3xl mx-auto">
+        <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 gap-14 sm:gap-20 max-w-3xl mx-auto">
           {communityPartners.map((item, i) => (
             <a
               key={i}
@@ -116,9 +116,10 @@ export default function Sponsors() {
               <img
                 src={item.logo}
                 alt="Community Partner"
-                className={`community-logo object-contain h-32 sm:h-36 md:h-40 ${
-                  i === 1 ? "scale-150" : ""
-                }`}
+className={`community-logo object-contain h-32 sm:h-36 md:h-40 ${
+  i === 2 ? "sm:scale-150" : ""
+}`}
+
               />
             </a>
           ))}
@@ -134,7 +135,8 @@ export default function Sponsors() {
         <div className="mx-auto mt-3 h-0.5 w-24 bg-gray-500/60" />
 
         {/* ⬇ Slightly stronger torch glow */}
-        <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-16 max-w-5xl mx-auto">
+        <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-y-0 gap-x-16 sm:gap-16 max-w-5xl mx-auto">
+
           {partners.map((item, i) => (
             <a
               key={i}
