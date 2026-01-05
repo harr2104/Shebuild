@@ -326,3 +326,20 @@ body {
   100% { transform: scale(0.75); }
 }
 
+.partner-img-large {
+  height: 20%;
+}
+
+.partner-img-small {
+  height: 5rem;
+}
+
+@media (min-width: 640px) {
+  .partner-img-large { height: 13rem; }
+  .partner-img-small { height: 8rem; }
+}
+
+@media (min-width: 768px) {
+  .partner-img-large { height: 15rem; }
+  .partner-img-small { height: 9rem; }
+}

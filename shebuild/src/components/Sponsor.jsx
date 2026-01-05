@@ -8,14 +8,24 @@ import nammaFlutter from "../assets/Namma flutter.png";
 import AIgeeks from "../assets/AIgeeks.png";
 
 // Partner logos
-import partner1 from "../assets/Interview buddy.png";
+import partner1 from "../assets/Interview buddy.png"; 
 import partner2 from "../assets/Navan AI.png";
 import partner3 from "../assets/Notion.png";
 import partner4 from "../assets/xyz-logo-white.png";
 
 export default function Sponsors() {
-  const communityPartners = [chennaiReact, nammaFlutter, AIgeeks];
-  const partners = [partner1, partner2, partner3, partner4];
+  const communityPartners = [
+    { logo: chennaiReact, href: "https://www.linkedin.com/company/chennaireact/?originalSubdomain=in" },
+    { logo: nammaFlutter, href: "https://www.linkedin.com/company/nammaflutter/" },
+    { logo: AIgeeks, href: " https://www.linkedin.com/company/ai-geeks-chennai/" },
+  ];
+
+  const partners = [
+    { logo: partner1, href: "https://www.linkedin.com/company/interviewbuddy/?originalSubdomain=in" },
+    { logo: partner2, href: "https://www.linkedin.com/company/navan-ai/?originalSubdomain=sg" },
+    { logo: partner3, href: "https://www.linkedin.com/company/notionhq/?originalSubdomain=in" },
+    { logo: partner4, href: "https://www.linkedin.com/company/xyz/" },
+  ];
 
   return (
     <section
@@ -47,21 +57,17 @@ export default function Sponsors() {
             Powered-By Sponsor
           </span>
 
-          <div className="relative">
+          <a href="https://www.linkedin.com/company/oostudioai/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" className="relative">
             <div
               className="absolute inset-0 -z-10 rounded-full blur-3xl glow-pulse
-              bg-[radial-gradient(circle,rgba(255,240,200,0.45)_0%,rgba(235,215,180,0.32)_40%,rgba(200,180,140,0.18)_65%,transparent_80%)]"
+              bg-[radial-gradient(circle,rgba(255,230,180,0.95)_0%,rgba(245,205,155,0.65)_22%,rgba(225,180,125,0.42)_42%,rgba(200,155,105,0.24)_62%,transparent_82%)]"
             />
             <div className="flex items-center justify-center h-28">
-              <img
-                src={ooStudio}
-                alt="OO Studio"
-                className="object-contain h-20 w-40 md:h-24 md:w-48 lg:h-28"
-              />
+              <img src={ooStudio} alt="OO Studio" className="object-contain h-20 w-40 md:h-24 md:w-48 lg:h-28" />
             </div>
-          </div>
+          </a>
 
-          <span className=" text-sm tracking-widest text-gray-300">
+          <span className="mt-1 text-sm tracking-widest text-gray-300">
             OO STUDIO
           </span>
         </div>
@@ -72,19 +78,15 @@ export default function Sponsors() {
             Venue & Refreshment Partner
           </span>
 
-          <div className="relative">
+          <a href="https://www.linkedin.com/school/rajalakshmi-engineering-college/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="relative">
             <div
               className="absolute inset-0 -z-10 rounded-full blur-3xl glow-pulse
-              bg-[radial-gradient(circle,rgba(255,240,200,0.45)_0%,rgba(235,215,180,0.32)_40%,rgba(200,180,140,0.18)_65%,transparent_80%)]"
+              bg-[radial-gradient(circle,rgba(255,235,190,0.65)_0%,rgba(240,210,165,0.42)_30%,rgba(215,185,135,0.26)_55%,rgba(190,160,115,0.14)_70%,transparent_82%)]"
             />
             <div className="flex items-center justify-center h-28">
-              <img
-                src={rec}
-                alt="Rajalakshmi Engineering College"
-                className="object-contain h-20 w-64 md:h-24 md:w-72 lg:h-28"
-              />
+              <img src={rec} alt="Rajalakshmi Engineering College" className="object-contain h-20 w-64 md:h-24 md:w-72 lg:h-28" />
             </div>
-          </div>
+          </a>
         </div>
       </div>
 
@@ -96,23 +98,29 @@ export default function Sponsors() {
 
         <div className="mx-auto mt-3 h-0.5 w-28 bg-gray-500/60" />
 
-        <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 gap-16 max-w-3xl mx-auto">
-          {communityPartners.map((logo, i) => (
-            <div
+        {/* ⬇ Increased spacing + slightly denser glow */}
+        <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 gap-20 max-w-3xl mx-auto">
+          {communityPartners.map((item, i) => (
+            <a
               key={i}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className={`relative flex items-center justify-center
               ${i === communityPartners.length - 1 ? "col-span-2 sm:col-span-1" : ""}`}
             >
               <div
-                className="absolute inset-0 -z-10 rounded-full blur-3xl glow-pulse
-                bg-[radial-gradient(circle,rgba(235,240,245,0.5)_0%,rgba(210,215,220,0.35)_40%,rgba(185,190,195,0.2)_65%,transparent_80%)]"
+                className="absolute inset-0 -z-10 rounded-full blur-[38px] glow-pulse
+                bg-[radial-gradient(circle,rgba(235,240,245,0.46)_0%,rgba(210,215,220,0.32)_60%,transparent_79%)]"
               />
               <img
-                src={logo}
+                src={item.logo}
                 alt="Community Partner"
-                className="h-32 sm:h-36 md:h-40 object-contain"
+                className={`community-logo object-contain h-32 sm:h-36 md:h-40 ${
+                  i === 1 ? "scale-150" : ""
+                }`}
               />
-            </div>
+            </a>
           ))}
         </div>
       </div>
@@ -125,25 +133,28 @@ export default function Sponsors() {
 
         <div className="mx-auto mt-3 h-0.5 w-24 bg-gray-500/60" />
 
+        {/* ⬇ Slightly stronger torch glow */}
         <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-16 max-w-5xl mx-auto">
-          {partners.map((logo, i) => (
-            <div key={i} className="relative flex items-center justify-center">
-             <div
-  className="absolute inset-0 -z-10 rounded-full blur-[44px] glow-pulse
-  bg-[radial-gradient(circle,rgba(235,220,205,0.32)_0%,rgba(215,200,185,0.22)_45%,rgba(195,180,165,0.12)_70%,transparent_85%)]
-  scale-135"
-/>
-
+          {partners.map((item, i) => (
+            <a
+              key={i}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative flex items-center justify-center"
+            >
+              <div
+                className="absolute inset-0 -z-10 rounded-full blur-[50px] glow-pulse
+                bg-[radial-gradient(circle,rgba(255,235,200,0.66)_0%,rgba(235,210,175,0.40)_26%,rgba(210,185,150,0.22)_48%,rgba(185,160,125,0.12)_70%,transparent_84%)]"
+              />
               <img
-                src={logo}
+                src={item.logo}
                 alt="Partner"
                 className={`object-contain ${
-                  i === 0 || i === 2
-                    ? "h-36 sm:h-40 md:h-44"
-                    : "h-22 sm:h-26 md:h-28"
+                  i === 0 || i === 2 ? "partner-img-large" : "partner-img-small"
                 }`}
               />
-            </div>
+            </a>
           ))}
         </div>
       </div>

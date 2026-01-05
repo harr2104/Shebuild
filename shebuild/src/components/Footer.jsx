@@ -58,11 +58,7 @@ export default function Footer() {
       // role: "Tech Support",
       linkedin: "https://www.linkedin.com/in/jeffrin-p-06064a253/",
     },
-    {
-      name: "Harshini Akshaya",
-      // role: "Systems Admin",
-      linkedin: "https://www.linkedin.com/in/harshiniakshaya/",
-    },
+
   ];
 
   // Quick links with section IDs
