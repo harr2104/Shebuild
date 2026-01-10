@@ -12,6 +12,7 @@ import partner1 from "../assets/Interview buddy.png";
 import partner2 from "../assets/Navan AI.png";
 import partner3 from "../assets/Notion.png";
 import partner4 from "../assets/xyz-logo-white.png";
+import partner5 from "../assets/Wyntrix.png";
 
 export default function Sponsors() {
   const communityPartners = [
@@ -25,6 +26,7 @@ export default function Sponsors() {
     { logo: partner2, href: "https://www.linkedin.com/company/navan-ai/?originalSubdomain=sg" },
     { logo: partner3, href: "https://www.linkedin.com/company/notionhq/?originalSubdomain=in" },
     { logo: partner4, href: "https://www.linkedin.com/company/xyz/" },
+    { logo: partner5, href: "https://www.linkedin.com/company/new-partner/" },
   ];
 
   return (
@@ -143,7 +145,9 @@ className={`community-logo object-contain h-32 sm:h-36 md:h-40 ${
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative flex items-center justify-center"
+             className={`relative flex items-center justify-center
+  ${i === partners.length - 1 ? "col-span-2 sm:col-span-4" : ""}`}
+
             >
               <div
                 className="absolute inset-0 -z-10 rounded-full blur-[50px] glow-pulse
