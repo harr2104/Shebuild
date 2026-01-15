@@ -148,7 +148,8 @@ export default function Agenda() {
 
         {/* TIMELINE */}
         <div className="relative max-w-6xl mx-auto">
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500/30 via-purple-500/30 to-blue-500/30 -translate-x-1/2" />
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500/30 via-purple-500/30 to-blue-500/30 -translate-x-1/2" />
+
 
           <div className="space-y-10">
             {sessions.map((session, index) => {
@@ -190,7 +191,8 @@ export default function Agenda() {
                     </span>
                   </div>
 
-                  <div className="absolute left-1/2 w-4 h-4 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full -translate-x-1/2 border-4 border-gray-950 z-10" />
+                  <div className="hidden md:block absolute left-1/2 w-4 h-4 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full -translate-x-1/2 border-4 border-gray-950 z-10" />
+
 
                   <div className="flex-1">
                     <div className="bg-gray-900/40 backdrop-blur-md rounded-2xl border border-gray-800/50 p-6">
