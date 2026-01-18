@@ -182,7 +182,7 @@ export default function Header() {
                   bg-gradient-to-r from-cyan-500/20 to-purple-500/20 
                   text-cyan-400 text-sm font-mono
                 "
-                onClick={() => window.open("https://www.google.com", "_blank")}
+                onClick={() => window.open("https://luma.com/vs98di4e", "_blank")}
               >
                 REGISTER FOR EVENT
               </button>
