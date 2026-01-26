@@ -57,15 +57,15 @@ export default function Agenda() {
       speaker: "Reshma G V S",
     },
     {
-      time: "11:00 - 11:40",
+      time: "11:00 - 11:45",
       title: "Panel Discussion",
-      description: "( Panel Discussion Session )",
+      description: "\"Entrepreneurship, Leadership And Personal Branding\"",
       icon: <FiUsers />,
       type: "panel",
       speaker: "Rohini Subramanian, Anandhi,Sahitya B A, Sindhuja Rajamaran",
     },
     {
-      time: "11:40 - 12:00",
+      time: "11:45 - 12:00",
       title: "Lightning Talks",
       description: "\"Escaping the Hype Cycle:Practical Patterns for Real-world AI Agents \"",
       icon: <FiZap />,
@@ -96,11 +96,11 @@ export default function Agenda() {
     },
     {
       time: "14:00 - 14:30",
-      title: "Conclusion",
+      title: "Conclusion & Vote of Thanks",
       description: "Event Wrap-up & Closing Notes",
       icon: <FiCheckCircle/>,
       type: "registration",
-      speaker: "Event Team",
+      speaker: "Keerthana M G(sheBuilds)",
     },
   ];
 
