@@ -40,7 +40,7 @@ export default function Agenda() {
       description: "\"AI Agents on the Cloud : Your New Teammates in 2026\"",
       icon: <FiCpu />,
       type: "keynote",
-      speaker: "Mahathi",
+      speaker: "Mahathi Chandramohan",
     },
     {
       time: "10:30 - 10:45",
@@ -51,10 +51,10 @@ export default function Agenda() {
     {
       time: "10:45 - 11:00",
       title: "Sponsor Talk",
-      description: "( Insights from Our Sponsor )",
+      description: "NOTION Decoded",
       icon: <FiUsers />,
       type: "panel",
-      speaker: "To Be Announced",
+      speaker: "Reshma G V S",
     },
     {
       time: "11:00 - 11:40",
@@ -62,15 +62,15 @@ export default function Agenda() {
       description: "( Panel Discussion Session )",
       icon: <FiUsers />,
       type: "panel",
-      speaker: "To Be Announced",
+      speaker: "Rohini Subramanian, Anandhi,Sahitya B A, Sindhuja Rajamaran",
     },
     {
       time: "11:40 - 12:00",
       title: "Lightning Talks",
-      description: " ( Fast-paced Lightning Talks )",
+      description: "\"Escaping the Hype Cycle:Practical Patterns for Real-world AI Agents \"",
       icon: <FiZap />,
       type: "workshop",
-      speaker: "To Be Announced",
+      speaker: "Gayathri Perumal",
     },
     {
       time: "12:00 - 13:00",
@@ -88,11 +88,11 @@ export default function Agenda() {
     },
     {
       time: "13:30 - 14:00",
-      title: "AMA Session",
-      description: "( Hiring Guidance & AMA )",
+      title: "Hiring Guidance",
+      description: "\" Real Pathway towards Hiring in 2026 and beyond\"",
       icon: <FiMessageCircle />,
       type: "networking",
-      speaker: "To Be Announced",
+      speaker: "Aarthi Kasirajan",
     },
     {
       time: "14:00 - 14:30",
