@@ -108,11 +108,15 @@ export default function Sponsors() {
 
               <div className="absolute inset-0 -z-10 rounded-full blur-[28px] sm:blur-[40px] md:blur-[50px] glow-pulse bg-[radial-gradient(circle,rgba(255,235,200,0.66)_0%,rgba(235,210,175,0.40)_26%,rgba(210,185,150,0.22)_48%,rgba(185,160,125,0.12)_70%,transparent_84%)]" />
 
-             <img
+ <img
   src={item.logo}
   alt="Partner"
-  className="object-contain transition-transform duration-300"
+  className={`
+    object-contain transition-transform duration-300
+    ${i === 1 || i === 3 || i === 4 || i === 5 ? "h-28 sm:h-20 md:h-24" : "h-28 sm:h-24 md:h-28"}
+  `}
 />
+
 
 {i === 5 && (
   <span className="-mt-7 leading-none text-[12px] sm:text-xs tracking-wide text-gray-300 uppercase">
