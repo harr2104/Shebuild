@@ -81,7 +81,7 @@ export default function Sponsors() {
         <h3 className="text-xl sm:text-2xl font-bold tracking-widest text-gray-100">COMMUNITY PARTNERS</h3>
         <div className="mx-auto mt-3 h-0.5 w-28 bg-gray-500/60" />
 
-        <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 gap-14 sm:gap-20 max-w-3xl mx-auto">
+        <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 gap-14 sm:gap-30 max-w-3xl mx-auto">
           {communityPartners.map((item, i) => (
             <a key={i} href={item.href} target="_blank" rel="noopener noreferrer" className={`relative flex items-center justify-center ${i === 2 ? "col-span-2 sm:col-span-1" : ""}`}>
               <div className="absolute inset-0 -z-10 rounded-full blur-[38px] glow-pulse bg-[radial-gradient(circle,rgba(235,240,245,0.46)_0%,rgba(210,215,220,0.32)_60%,transparent_79%)]" />
