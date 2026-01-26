@@ -106,7 +106,7 @@ export default function Sponsors() {
                 alt="Partner"
                 className={`object-contain transition-transform duration-300 ${
                   i === 5
-                    ?  "h-40 sm:h-44 md:h-56 scale-150"
+                    ?  "h-40 sm:h-44 md:h-56 scale-125"
 
                     : i === 0 || i === 2
                     ? "partner-img-large"
