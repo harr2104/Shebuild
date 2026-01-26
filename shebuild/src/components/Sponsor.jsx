@@ -98,21 +98,29 @@ export default function Sponsors() {
 
         <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-y-0 gap-x-16 sm:gap-16 max-w-5xl mx-auto">
           {partners.map((item, i) => (
-            <a key={i} href={item.href} target="_blank" rel="noopener noreferrer" className="relative flex items-center justify-center">
+  <a
+    key={i}
+    href={item.href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="relative flex flex-col items-center justify-center"
+  >
+
               <div className="absolute inset-0 -z-10 rounded-full blur-[28px] sm:blur-[40px] md:blur-[50px] glow-pulse bg-[radial-gradient(circle,rgba(255,235,200,0.66)_0%,rgba(235,210,175,0.40)_26%,rgba(210,185,150,0.22)_48%,rgba(185,160,125,0.12)_70%,transparent_84%)]" />
 
-              <img
-                src={item.logo}
-                alt="Partner"
-                className={`object-contain transition-transform duration-300 ${
-                  i === 5
-                    ?  "h-40 sm:h-44 md:h-56 scale-125"
+             <img
+  src={item.logo}
+  alt="Partner"
+  className="object-contain transition-transform duration-300"
+/>
 
-                    : i === 0 || i === 2
-                    ? "partner-img-large"
-                    : "partner-img-small"
-                }`}
-              />
+{i === 5 && (
+  <span className="-mt-7 leading-none text-[12px] sm:text-xs tracking-wide text-gray-300 uppercase">
+
+    Mastra AI
+  </span>
+)}
+
             </a>
           ))}
         </div>
